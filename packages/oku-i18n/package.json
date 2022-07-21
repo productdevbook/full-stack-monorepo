@@ -1,0 +1,23 @@
+{
+  "name": "oku-i18n",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only server.ts",
+    "lint": "eslint \"./**/*.{ts,vue}\"",
+    "lint:fix": "eslint --fix \"./**/*.{ts,vue}\"",
+    "test": "jest",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.2",
+    "@oku/config": "workspace:*",
+    "@oku/tsconfig": "workspace:*",
+    "chokidar": "^3.5.3",
+    "eslint": "^8.19.0",
+    "ts-node-dev": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
