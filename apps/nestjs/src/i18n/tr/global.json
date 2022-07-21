@@ -1,0 +1,30 @@
+{
+  "error": {
+    "old_password_not_valid": "Test",
+    "sorry_there_was_problem": "Sorry there was a problem",
+    "you_check_parameters": "You should check the parameters",
+    "email_already_exists": "Email already exists",
+    "password_password_not_match": "Password and confirm password do not match",
+    "no_user_found_email": "No user found for email {email}",
+    "user_not_found": "User not found.",
+    "session_expired": "Session expired.",
+    "invalid_password": "Invalid password.",
+    "code_has_expired_new_code": "Code has expired. Please generate new code again.",
+    "user_already_confirmed": "User already confirmed.",
+    "wrong_password_or_email": "Wrong password or email.",
+    "book": {
+      "error_when_interaction_genre_adding": "Error when interaction genre adding",
+      "book_not_found": "Book not found.",
+      "book_genre_exists": "Book genre exists",
+      "book_already_exists": "Book already exists",
+      "book_contribute_exists": "Book Contribute exists",
+      "you_must_add_contribute": "You must add Contribute",
+      "you_must_check_contributes": "You must check Contributes",
+      "dont_read_book": "You don't read this book"
+    },
+    "dont_delete_file": "Don't delete file",
+    "review": {
+      "dont_change": "Review types of review articles cannot be changed."
+    }
+  }
+}

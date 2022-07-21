@@ -1,0 +1,8 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/space-infix-ops": ["off", {"int32Hint": false}]
+  },
+  "ignorePatterns": ["migrations", "src/modules/translate/interfaces"]
+}

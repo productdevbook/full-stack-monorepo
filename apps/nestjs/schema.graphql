@@ -1,0 +1,483 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type City {
+  archived: Boolean!
+  country: Country
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+  userSettings: [UserSetting!]
+}
+
+type Country {
+  capital: String!
+  cities: [City!]!
+  currency: String!
+  currencyName: String!
+  currencySymbol: String!
+  emoji: String!
+  emojiU: String!
+  id: ID!
+  iso2: String!
+  iso3: String!
+  latitude: String!
+  longitude: String!
+  name: String!
+  native: String!
+  numericCode: String!
+  phoneCode: String!
+  region: String!
+  states: [State!]!
+  subRegion: String!
+  timeZones: String!
+  tld: String!
+  userSettings: [UserSetting!]!
+}
+
+input CreateNotificationTokenInput {
+  """Example field (placeholder)"""
+  deviceId: String!
+
+  """Example field (placeholder)"""
+  token: String!
+}
+
+type Currency {
+  archived: Boolean!
+  code: String!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+  userSettings: [UserSetting!]!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input ExampleInput {
+  info: JSON!
+}
+
+input ForgotPasswordInput {
+  email: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
+"""
+scalar JWT
+
+type Menu {
+  archived: Boolean!
+  childMenus: [Menu!]
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  icon: String!
+  id: ID!
+  isActive: Boolean!
+  name: String!
+  order: Int!
+  pageMenus: [PageMenu!]
+  parentMenu: Menu
+  updatedAt: DateTime
+}
+
+type Mutation {
+  forgotPassword(data: ForgotPasswordInput!): Boolean!
+  logout: Boolean!
+  refreshToken(data: RefreshTokenInput!): TokenResponse!
+  resetPassword(data: ResetPasswordInput!): Boolean!
+  saveNotificationToken(data: CreateNotificationTokenInput!): NotificationToken!
+  sendNotificationToken(data: SendNotificationInput!): Boolean!
+  signIn(data: SignInInput!): TokenResponse!
+  signUp(data: SignUpInput!): User!
+  terminateSession(data: TerminateSessionInput!): Boolean!
+}
+
+type NotificationToken {
+  archived: Boolean!
+  createdAt: DateTime!
+  createdBy: User!
+  deleted: Boolean!
+  deletedAt: DateTime
+  deviceId: String!
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  token: String!
+  updatedAt: DateTime
+}
+
+type Page {
+  archived: Boolean!
+  columns: String
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  isOrganization: Boolean!
+  isPublic: Boolean!
+  isSql: Boolean!
+  name: String!
+  pageMenus: [PageMenu!]
+  updatedAt: DateTime
+  url: String!
+}
+
+type PageMenu {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  menu: Menu
+  page: Page
+  roles: [PageMenuRole!]
+  updatedAt: DateTime
+}
+
+type PageMenuRole {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  pageMenu: Page
+  role: Role
+  updatedAt: DateTime
+}
+
+type Query {
+  example(data: ExampleInput!): String!
+  me: User!
+  sessions: [Session!]!
+}
+
+input RefreshTokenInput {
+  refreshToken: String!
+}
+
+input ResetPasswordInput {
+  code: String!
+  password: String!
+  repeatPassword: String!
+}
+
+type Role {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  name_en: String
+  pageMenus: [PageMenuRole!]
+  updatedAt: DateTime
+  userRoles: [UserRole!]!
+}
+
+input SendNotificationInput {
+  """Example field (placeholder)"""
+  body: String!
+
+  """Example field (placeholder)"""
+  title: String!
+
+  """Example field (placeholder)"""
+  token: String!
+}
+
+type Session {
+  """Session creation date"""
+  createdDate: DateTime
+
+  """Device info"""
+  device: UserAgent
+
+  """Device IP"""
+  ip: String!
+
+  """Jit"""
+  jit: String!
+}
+
+input SignInInput {
+  email: String!
+  isCookies: Boolean = false
+  password: String!
+  rememberMe: Boolean = false
+}
+
+input SignUpInput {
+  confirmPassword: String!
+  displayName: String!
+  email: String!
+  isTermsAccepted: Boolean!
+  name: String!
+  password: String!
+  username: String!
+}
+
+type SiteLanguage {
+  archived: Boolean!
+  code: String!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  name_en: String
+  updatedAt: DateTime
+  userSettings: [UserSetting!]!
+}
+
+type SiteTheme {
+  archived: Boolean!
+  code: String!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: SiteThemeEnum!
+  updatedAt: DateTime
+  userSettings: [UserSetting!]!
+}
+
+"""This site theme."""
+enum SiteThemeEnum {
+  auto
+  dark
+  light
+}
+
+type State {
+  country: [Country!]!
+  countryCode: String!
+  countryName: String!
+  id: ID!
+  latitude: String!
+  longitude: String!
+  name: String!
+  stateCode: String!
+  type: String
+  userSettings: [UserSetting!]!
+}
+
+input TerminateSessionInput {
+  jti: String!
+}
+
+type TokenResponse {
+  """JWT access token"""
+  accessToken: JWT!
+
+  """JWT refresh token"""
+  refreshToken: JWT!
+}
+
+type User {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+
+  """User devices"""
+  devices: [UserDevice!]
+  disabled: Boolean!
+
+  """Example field (display name)"""
+  displayName: String!
+
+  """Example field (email)"""
+  email: String!
+
+  """Example field (emailVerified)"""
+  emailVerified: DateTime
+  hidden: Boolean!
+  id: ID!
+
+  """Example field (placeholder)"""
+  image: String
+
+  """Example field (placeholder)"""
+  is_terms_accepted: String!
+
+  """last login time"""
+  lastLoginAt: DateTime
+
+  """Last login IP"""
+  lastLoginIp: String
+
+  """Example field (name)"""
+  name: String!
+
+  """User notification tokens"""
+  notificationToken: [NotificationToken!]
+  providerAccountId: String
+  updatedAt: DateTime
+  userSetting: UserSetting!
+
+  """Example field (username)"""
+  username: String!
+}
+
+type UserAgent {
+  browser: UserAgentBrowser
+  cpu: UserAgentCPU!
+  device: UserAgentDevice
+  engine: UserAgentEngine!
+  os: UserAgentOS!
+  ua: String!
+}
+
+type UserAgentBrowser {
+  """Browser major"""
+  major: String
+
+  """Browser name"""
+  name: String
+
+  """Browser version"""
+  version: String
+}
+
+type UserAgentCPU {
+  """CPU architecture"""
+  architecture: String
+}
+
+type UserAgentDevice {
+  """Device model"""
+  model: String
+
+  """Device type"""
+  type: String
+
+  """Device vendor"""
+  vendor: String
+}
+
+type UserAgentEngine {
+  """Engine name"""
+  name: String
+
+  """Engine version"""
+  version: String
+}
+
+type UserAgentOS {
+  """OS name"""
+  name: String
+
+  """OS version"""
+  version: String
+}
+
+type UserDevice {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+
+  """device fingerprint"""
+  fingerprint: String!
+
+  """Device first login time"""
+  firstLoginAt: DateTime
+
+  """Device first login IP"""
+  firstLoginIp: String
+  hidden: Boolean!
+  id: ID!
+
+  """last login time"""
+  lastLoginAt: DateTime
+
+  """Last login IP"""
+  lastLoginIp: String
+
+  """device name"""
+  name: String!
+
+  """login token jit"""
+  token: String
+
+  """Equipment type"""
+  type: String!
+  updatedAt: DateTime
+
+  """owning user"""
+  user: User!
+
+  """device UA"""
+  userAgent: UserAgent!
+}
+
+type UserRole {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  role: Role!
+  updatedAt: DateTime
+  user: User!
+}
+
+type UserSetting {
+  archived: Boolean!
+  city: City
+  country: Country
+  createdAt: DateTime!
+  currency: Currency
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  siteLanguage: SiteLanguage
+  siteTheme: SiteTheme
+  state: State
+  timezone: String
+  updatedAt: DateTime
+
+  """User devices"""
+  user: [User!]
+}

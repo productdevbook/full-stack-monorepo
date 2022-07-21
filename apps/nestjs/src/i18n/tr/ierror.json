@@ -1,0 +1,8 @@
+{
+  "user_dont_found": "User not found",
+  "user_already_exists": "User already exists",
+  "forbidden": "Forbidden",
+  "invalid_refresh_token": "Invalid refresh token",
+  "you_cant_login_to_your_account": "You can't login to your account",
+  "passwords_dont_match": "Passwords don't match"
+}

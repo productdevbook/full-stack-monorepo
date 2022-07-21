@@ -1,0 +1,11 @@
+{
+  "user_dont_found": "User not found",
+  "user_already_exists": "User already exists",
+  "forbidden": "Forbidden",
+  "invalid_refresh_token": "Invalid refresh token",
+  "you_cant_login_to_your_account": "You can't login to your account",
+  "passwords_dont_match": "Passwords don't match",
+  "password_match_regexp": "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+  "could_not_reset_password": "Could not reset password, please try again",
+  "code_expired": "Code expired, please try again"
+}

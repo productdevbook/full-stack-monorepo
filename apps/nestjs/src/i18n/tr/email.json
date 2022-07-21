@@ -1,0 +1,24 @@
+{
+    "login_page": " Giriş Sayfası ",
+    "username": "Kullanıcı adı: ",
+    "thanks": "Teşekkürler,",
+    "team_and_company": "appname Takımı",
+    "url_browser": "Yukarıdaki düğmeyle ilgili sorun yaşıyorsanız, aşağıdaki URL'yi kopyalayıp web tarayıcınıza yapıştırın.",
+    "welcome": {
+        "title": "Hoşgeldin {username}",
+        "description": "appname'i denediğiniz için teşekkürler. Sizi aramızda görmekten heyecan duyuyoruz. appname'den en iyi şekilde yararlanmak için sonraki birincil adımı yapın:",
+        "action_button": "Şimdi giriş yap",
+        "for_reference_infarmation": "Uygulama için, işte giriş bilgileriniz:",
+        "support": "Herhangi bir sorunuz varsa, müşteri başarı ekibimize e-posta göndermekten çekinmeyin."
+    },
+    "password_reset": {
+        "title": "Password Reset",
+        "error": "Something went wrong. Please try again after 5 minutes.",
+        "description": "You recently requested to reset your password for your  account. Use the button below to reset it. <strong>This password reset is only valid for the next 24 hours.</strong>",
+        "action_button": "Reset Password",
+        "bottom": "For security, this request was received from a {operating_system} device using {browser_name}. If you did not request a password reset, please ignore this email or <a href=\"{help_url}\" class=\"text-blue-postmark\">contact support</a> if you have questions.",
+        "success": "Your password has been reset. Please use the new password to log in.",
+        "success_send_email": "Your password has been reset. Please check your email for your new password.",
+        "check_email": "Please check your email and click the link to reset your password."
+    }
+}
