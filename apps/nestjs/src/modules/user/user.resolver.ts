@@ -24,6 +24,6 @@ export class UserResolver {
   @Public()
   @Mutation(() => Boolean)
   sendNotificationToken(@UserDecorator() user: JwtArgs, @Args('data') data: SendNotificationInput) {
-    return this.userService.sendToken(data, user)
+    return this.userService.sendToken(data)
   }
 }
