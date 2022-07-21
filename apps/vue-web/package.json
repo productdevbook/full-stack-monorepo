@@ -14,9 +14,10 @@
   "dependencies": {
     "@apollo/client": "3.6.9",
     "@headlessui/vue": "1.6.7",
+    "@intlify/vite-plugin-vue-i18n": "5.0.0",
     "@oku/api": "workspace:*",
-    "@productdevbook/auth": "0.1.2",
     "@popperjs/core": "2.11.5",
+    "@productdevbook/auth": "0.1.2",
     "@vee-validate/i18n": "4.6.1",
     "@vue/apollo-composable": "4.0.0-alpha.18",
     "@vueuse/core": "8.9.4",
