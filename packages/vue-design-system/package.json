@@ -1,0 +1,11 @@
+{
+  "name": "vue-design-system",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint \"./**/*.{ts,vue}\"",
+    "lint:fix": "eslint --fix \"./**/*.{ts,vue}\""
+  },
+  "devDependencies": {
+    "@oku/tsconfig": "workspace:*"
+  }
+}

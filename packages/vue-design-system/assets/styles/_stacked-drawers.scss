@@ -1,0 +1,31 @@
+#dialog-outlet {
+	.h-drawer .content .main {
+		@apply pb-40;
+	}
+	.h-container.right .h-drawer {
+		transition: var(--slow) var(--transition);
+		transition-property: transform, border-radius;
+	}
+
+	.h-container.right:not(:nth-last-child(-n + 5)) {
+		display: none;
+	}
+
+	.h-container.right:not(:last-of-type) .h-drawer {
+		overflow: hidden;
+	}
+
+	@for $i from 1 to 6 {
+		> .h-container.right:not(.dialog-leave-active):nth-last-of-type(#{$i}):not(:last-of-type) .h-drawer {
+			@apply transition duration-300;
+			transform: translateX(-#{($i - 1) * 30}px) scale(#{1 - (0.05 * ($i - 1))});
+			transform-origin: left;
+		}
+	}
+
+	.h-container.right:not(:first-of-type) {
+		&.dialog-leave-active {
+			transition: none !important;
+		}
+	}
+}

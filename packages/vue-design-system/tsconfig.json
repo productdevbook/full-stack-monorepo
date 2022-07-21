@@ -1,0 +1,9 @@
+{
+  "extends": "@oku/tsconfig/vue.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "declaration": false,
+  },
+  "exclude": ["node_modules", "dist", "android", "ios", ".turbo"]
+}
