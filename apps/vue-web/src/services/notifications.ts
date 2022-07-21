@@ -16,6 +16,7 @@ const registerToken = async (token: string) => {
     variables: {
       data: {
         token,
+        deviceId: '',
       },
     },
   })

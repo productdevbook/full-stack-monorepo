@@ -15,7 +15,6 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
     "target": "esnext",
     "types": [
       "vue",
@@ -41,5 +40,14 @@
       ],
     }
   },
-  "exclude": ["node_modules", "dist", "android", "ios", ".turbo", "**/*.worker.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "android",
+    "ios",
+    ".turbo",
+    "**/*.worker.ts",
+    "dev-dist",
+    "*.js"
+  ]
 }

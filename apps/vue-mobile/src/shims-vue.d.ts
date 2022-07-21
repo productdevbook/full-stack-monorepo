@@ -3,17 +3,6 @@
 /// <reference types="@oku/api/types/schema" />
 /// <reference types="vue-app/shims-vue" />
 
-declare interface Window {
-  // extend the window
-}
-
-
-declare module '*.vue' {
-  import type {DefineComponent} from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
-}
-
 interface ImportMetaEnv {
   readonly VITE_API_URL: string
   readonly VITE_GRAPHQL_URL: string

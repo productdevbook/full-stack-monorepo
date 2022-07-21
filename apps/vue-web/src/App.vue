@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GlobalThemeOverrides, darkTheme, lightTheme, useMessage } from 'naive-ui'
+import { GlobalThemeOverrides, darkTheme, lightTheme } from 'naive-ui'
 const { locale } = useI18n()
 // auto-detect dark theme support
 const prefersDark = usePreferredDark()

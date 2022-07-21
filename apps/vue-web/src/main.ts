@@ -4,17 +4,16 @@ import axios from 'axios'
 import 'uno.css'
 import './assets/base.css'
 import { createHead } from '@vueuse/head'
-// import { onMessage } from 'firebase/messaging'
 import { onMessage } from 'firebase/messaging'
 import router, { routes } from './router'
-import App from './App.vue'
 import { messaging } from './services/notifications'
+import App from './App.vue'
+// import { onMessage } from 'firebase/messaging'
 // import { messaging } from './services/notifications'
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
 document.head.appendChild(meta)
-
 const head = createHead()
 
 const pinia = createPinia()
@@ -60,7 +59,7 @@ onMessage(messaging, (payload) => {
   if (notificationData.data)
     tSuccess({ title: notificationData.data.title, description: notificationData.data.body })
 
-  const { title, body } = notificationData.data
+  const { title, body } = notificationData.data as { title: string; body: string }
   const notificationTitle = title
   const notificationOptions = {
     body,
