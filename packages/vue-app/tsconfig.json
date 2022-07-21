@@ -1,0 +1,4 @@
+{
+  "extends": "@oku/tsconfig/vue.json",
+  "exclude": ["dist", "build", "node_modules"]
+}
