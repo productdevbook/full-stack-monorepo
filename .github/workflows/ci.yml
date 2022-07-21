@@ -26,7 +26,7 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install
         
-      - name: 🛠 Vue Build
+      - name: 🛠 Build
         run: pnpm build
 
       - name: 💪 Lint

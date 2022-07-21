@@ -33,7 +33,6 @@
     "db:revert": "pnpm --filter app-nestjs migrate:revert",
     "db:show": "pnpm --filter app-nestjs migrate:show",
     "generate": "pnpm --filter @oku/api build && pnpm --filter api app:create",
-    "auth:build": "pnpm --filter @oku/auth build",
     "api:build": "pnpm --filter @oku/api graphql-ts",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
