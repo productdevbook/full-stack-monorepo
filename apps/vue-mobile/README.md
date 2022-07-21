@@ -1,1 +1,1 @@
-# 多终端应用示例
+# Vue-Mobile App
