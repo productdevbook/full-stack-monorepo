@@ -74,7 +74,7 @@
       "groupName": "packages dependencies",
       "groupSlug": "packages-path",
       "rangeStrategy": "replace"
-    },
+    }
   ],
   "ignoreDeps": [
     "@maizzle/cli",
