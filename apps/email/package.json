@@ -1,0 +1,21 @@
+{
+  "name": "@productdevbook/email",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "local": "maizzle build",
+    "build": "maizzle build production  --bin ../../node_modules/@maizzle/framework/src",
+    "mail:dev": "maizzle serve --bin ../../node_modules/@maizzle/framework/src",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "@maizzle/framework": "4.0.2",
+    "tailwindcss-box-shadow": "1.0.0",
+    "tailwindcss-email-variants": "2.0.0",
+    "tailwindcss-mso": "1.2.0"
+  },
+  "devDependencies": {
+    "@maizzle/cli": "1.5.0",
+    "autoprefixer": "10.4.7"
+  }
+}

@@ -1,0 +1,32 @@
+.button {
+  @apply inline-block text-white no-underline;
+  background-color: #2563eb;
+  border-top: 10px solid #2563eb;
+  border-right: 18px solid #2563eb;
+  border-bottom: 10px solid #2563eb;
+  border-left: 18px solid #2563eb;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+}
+
+.button--green {
+  background-color: #16a34a;
+  border-top: 10px solid #16a34a;
+  border-right: 18px solid #16a34a;
+  border-bottom: 10px solid #16a34a;
+  border-left: 18px solid #16a34a;
+}
+
+.button--red {
+  background-color: #dc2626;
+  border-top: 10px solid #dc2626;
+  border-right: 18px solid #dc2626;
+  border-bottom: 10px solid #dc2626;
+  border-left: 18px solid #dc2626;
+}
+
+@screen sm {
+  .button {
+    @apply w-full text-center !important;
+  }
+}
