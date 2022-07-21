@@ -1,0 +1,4 @@
+graphql.ts
+node-graphql.ts
+codegen.yml
+*.graphql

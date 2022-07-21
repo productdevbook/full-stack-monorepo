@@ -1,0 +1,41 @@
+{
+  "name": "@oku/api",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "yarn graphql-ts",
+    "dev": "ts-node-dev --respawn --transpile-only server.ts",
+    "lint": "eslint \"./**/*.{ts,vue}\"",
+    "lint:fix": "eslint --fix \"./**/*.{ts,vue}\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "graphql-ts": "graphql-codegen --config codegen.yml"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.2",
+    "@graphql-codegen/add": "^3.1.1",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/schema-ast": "^2.4.1",
+    "@graphql-codegen/typed-document-node": "^2.2.8",
+    "@graphql-codegen/typescript": "^2.4.8",
+    "@graphql-codegen/typescript-graphql-files-modules": "^2.1.1",
+    "@graphql-codegen/typescript-operations": "^2.3.5",
+    "@graphql-codegen/typescript-vue-apollo": "^3.2.9",
+    "@graphql-codegen/typescript-vue-apollo-smart-ops": "^2.2.8",
+    "@graphql-typed-document-node/core": "^3.1.1",
+    "@oku/config": "workspace:*",
+    "@oku/tsconfig": "workspace:*",
+    "@types/node": "^17.0.27",
+    "@vue/apollo-composable": "^4.0.0-alpha.16",
+    "chokidar": "^3.5.3",
+    "eslint": "^8.19.0",
+    "graphql-tag": "^2.12.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "4.7.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

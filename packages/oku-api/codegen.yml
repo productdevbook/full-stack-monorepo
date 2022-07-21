@@ -1,0 +1,46 @@
+overwrite: true
+
+documents: ./graphql/**/*.graphql
+
+schema: ../../apps/nestjs/schema.graphql
+# schema: http://localhost:4000/graphql
+generates:
+  types/schema.d.ts:
+    plugins:
+      - add: { content: '// THIS FILE IS GENERATED, DO NOT EDIT!' }
+      - add: { content: '/* eslint-disable eslint-comments/no-unlimited-disable */' }
+      - add: { content: '/* tslint:disable */' }
+      - add: { content: '/* eslint-disable */' }
+      - add: { content: '// @ts-nocheck' }
+      - typescript
+    config:
+      enumsAsTypes: true
+      optionalType: undefined | null
+  types/vue-apollo.ts:
+    plugins:
+      - add: { content: '// THIS FILE IS GENERATED, DO NOT EDIT!' }
+      - add: { content: '/* eslint-disable eslint-comments/no-unlimited-disable */' }
+      - add: { content: '/* tslint:disable */' }
+      - add: { content: '/* eslint-disable */' }
+      - add: { content: '// @ts-nocheck' }
+      - typescript
+      - typescript-operations
+      - typescript-vue-apollo
+    config:
+      enumsAsTypes: true
+      optionalType: undefined | null
+      withCompositionFunctions: true
+      vueApolloComposableImportFrom: '@vue/apollo-composable'
+      vueCompositionApiImportFrom: vue
+  node-graphql.ts:
+    plugins:
+      - add: { content: '// THIS FILE IS GENERATED, DO NOT EDIT!' }
+      - add: { content: '/* eslint-disable eslint-comments/no-unlimited-disable */' }
+      - add: { content: '/* tslint:disable */' }
+      - add: { content: '/* eslint-disable */' }
+      - add: { content: '// @ts-nocheck' }
+      - typescript
+      - typescript-operations
+      - typed-document-node
+    config:
+       enumsAsTypes: true

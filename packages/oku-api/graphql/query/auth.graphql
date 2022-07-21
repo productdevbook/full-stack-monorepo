@@ -1,0 +1,6 @@
+query GetUserInfo {
+  me {
+    id
+    email
+  }
+}

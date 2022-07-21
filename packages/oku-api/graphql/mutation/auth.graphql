@@ -1,0 +1,24 @@
+mutation forgotPassword($data: ForgotPasswordInput!) {
+  forgotPassword(data: $data)
+}
+
+mutation Login($signIn: SignInInput!) {
+  signIn(data: $signIn) {
+    refreshToken
+  }
+}
+
+mutation ResetPassword($data: ResetPasswordInput!) {
+ resetPassword(data: $data)
+}
+
+mutation signup($data: SignUpInput!) {
+  signUp(data: $data) {
+    name
+    username
+  }
+}
+
+mutation logout {
+  logout
+}

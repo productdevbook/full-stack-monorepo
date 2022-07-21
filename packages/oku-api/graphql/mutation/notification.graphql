@@ -1,0 +1,7 @@
+mutation createTokenNotification($data: CreateNotificationTokenInput!) {
+    saveNotificationToken(data: $data) {
+        token
+        id
+        createdAt
+    }
+  }

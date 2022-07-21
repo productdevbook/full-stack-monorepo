@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "ESNext",
+    "module": "Node16",
+    "lib": ["ESNext"],
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": false,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "baseUrl": "."
+  },
+  "exclude": ["node_modules", "dist", "public", "docs"]
+}
