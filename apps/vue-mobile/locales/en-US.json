@@ -2,6 +2,7 @@
   "account": {
     "backButton": "Back",
     "changePassword": "Change password",
+    "merhaba": "Merhaba",
     "discord": "Discord",
     "heading": "Account",
     "keys": "API keys",
@@ -34,7 +35,8 @@
     "check_email": "Check your email to get the link to reset your password",
     "email": "Email",
     "heading": "Forgot password",
-    "success": "Password updated successfully"
+    "sub_heading": "Enter your email address and we'll send you a link to reset your password.",
+    "success": "Password updated success"
   },
   "login": {
     "andpass": "And password",
@@ -43,32 +45,43 @@
     "email": "Email",
     "forgot": "forgot",
     "hello": "Hello",
-    "login-in": "Login in",
+    "login-in": "Sign in",
     "or": "or",
     "password": "Password",
-    "withemail": "With email adress"
+    "withemail": "With email adress",
+    "signup": "Sign up",
+    "remember": "Remember me"
+  },
+  "signup": {
+    "email": "Email",
+    "heading": "Sign up",
+    "subHeading": "Create your account",
+    "password": "Password",
+    "error_confirm_password": "Passwords must match",
+    "confirm_password": "Confirm password",
+    "name": "Name",
+    "display-name": "Display name",
+    "username": "Username",
+    "password_confirmation": "Confirm password",
+    "submit": "Sign up",
+    "terms": "I agree to the terms of services",
+    "have_account_login": "Already have an account? Login",
+    "error_terms": "You must agree to the terms of services",
+    "success": "Success"
   },
   "password": {
     "heading": "Create Password",
     "new": "New Password",
     "validate": "Validate"
   },
-  "register": {
-    "already-account": "You already have an account?",
-    "check-email": "Please check your email and verify",
-    "confirm-email": "Confirm email",
-    "confirm-password": "Confirm password",
-    "desc": "Fill the following fields to complete your registration",
-    "email": "Email",
-    "first-name": "first name",
-    "heading": "Registration",
-    "last-name": "last name",
-    "lowerCaseError": "Should contain lowercase letters",
-    "next": "Next",
-    "password": "password",
-    "password-hint": "Enter a combination of at least 6 numbers, letters and punctuations.",
-    "specialError": "Should contain special characters",
-    "upperCaseError": "Should contain uppercase letters"
+  "resetPassword": {
+    "heading": "Reset Password",
+    "input": "Enter your code",
+    "button": "Send password reset email",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "change_password": "Change Password",
+    "password_match_regexp": "Password must be at least 8 characters long and contain at least one number, one uppercase and one lowercase letter"
   },
   "activation": {
     "desc": "Fill the following fields to complete your registration",
@@ -90,6 +103,7 @@
     "save": "Save",
     "success": "Success",
     "warning": "Warning",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "version": "Version"
   }
 }

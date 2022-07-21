@@ -1,0 +1,9 @@
+auto-imports.d.ts
+components.d.ts
+dist
+.turbo
+ios
+android
+node_modules
+public
+capacitor.config.ts
