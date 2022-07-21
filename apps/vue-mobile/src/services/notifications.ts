@@ -1,14 +1,15 @@
+/* eslint-disable no-console */
 import { getMessaging, getToken, onMessage } from 'firebase/messaging'
 import { initializeApp } from 'firebase/app'
 import { isPlatform } from '@ionic/vue'
 import type { ActionPerformed, PushNotificationSchema, Token } from '@capacitor/push-notifications'
 import { PushNotifications } from '@capacitor/push-notifications'
 import type { Router } from 'vue-router'
-import { Device } from '@capacitor/device'
+// import { Device } from '@capacitor/device'
 
 // Your web app's Firebase configuration
 const firebaseConfig = import.meta.env.VITE_FIREBASE_CONFIG
-const firebaseConfigWeb = import.meta.env.VITE_WEB_FIREBASE_CONFIG
+// const firebaseConfigWeb = import.meta.env.VITE_WEB_FIREBASE_CONFIG
 
 export const requestPerm = async () => {
   if (isPlatform('capacitor'))
@@ -18,21 +19,17 @@ export const requestPerm = async () => {
 }
 
 const registerToken = async (token: string) => {
-  const api = useApollo()
-  const dev = await Device.getInfo()
-  const { error } = await api.mutate({ mutation: CreateTokenNotificationDocument, variables:{
+  console.log(token)
+  // const api = useApollo()
+  // const dev = await Device.getInfo()
+  // const { error } = await api.mutate({
+  //   mutation: CreateTokenNotificationDocument,
+  //   variables: {
 
-  } })
-
-    .upsert(
-      {
-        created_by: supabase.auth.user()?.id,
-        token,
-        device_id: await Device.getId(),
-        name: `${dev.platform}_${dev.model}`,
-      })
-  if (error)
-    console.error('error registration', error)
+  //   },
+  // })
+  // if (error)
+  //   console.error('error registration', error)
 }
 
 const checkPermissions = async () => {
@@ -74,20 +71,20 @@ const getTokenAny = async (): Promise<string> => {
 }
 
 export const unregisterToken = async () => {
-  const supabase = useSupabase()
-  try {
-    const token = await getTokenAny()
-    console.log(`Push unregistration success, token: ${token}`)
-    const { error } = await supabase
-      .from('notification_token')
-      .delete()
-      .match({ token })
-    if (error)
-      console.error('error unregistration', error)
-  }
-  catch (e) {
-    console.error('unregisterToken', e)
-  }
+  // const supabase = useSupabase()
+  // try {
+  //   const token = await getTokenAny()
+  //   console.log(`Push unregistration success, token: ${token}`)
+  //   const { error } = await supabase
+  //     .from('notification_token')
+  //     .delete()
+  //     .match({ token })
+  //   if (error)
+  //     console.error('error unregistration', error)
+  // }
+  // catch (e) {
+  //   console.error('unregisterToken', e)
+  // }
 }
 
 export const initNotif = async (loop = true) => {

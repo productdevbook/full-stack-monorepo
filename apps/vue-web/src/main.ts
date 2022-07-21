@@ -51,6 +51,7 @@ onMessage(messaging, (payload) => {
   // console.log(payload.data)
   const notificationData = payload
 
+  // eslint-disable-next-line no-console
   console.log(
     '[firebase-messaging-sw.js] Received foreground message ',
     notificationData,
@@ -70,6 +71,7 @@ onMessage(messaging, (payload) => {
     registration
       .showNotification(notificationTitle, notificationOptions)
       .then(() => {
+        // eslint-disable-next-line no-console
         console.log('[firebase-messaging-sw.js] Notification shown')
       })
       .catch((error) => {

@@ -29,12 +29,13 @@ export class NotificationService {
       },
     } as Message
     try {
-      await firebase.messaging().send(message).then((response) => {
+      await firebase.messaging().send(message).then(() => {
         return true
       })
       return true
     }
     catch (error) {
+      /* eslint-disable no-console */
       console.log('Error sending message:', error)
       return false
     }

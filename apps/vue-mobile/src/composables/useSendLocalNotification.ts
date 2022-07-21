@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { LocalNotificationSchema, LocalNotifications } from '@capacitor/local-notifications'
 // import { Badge } from '@robingenz/capacitor-badge'
 

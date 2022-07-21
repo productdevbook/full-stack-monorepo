@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 /// <reference lib="webworker" />
 import { initializeApp } from 'firebase/app'
 import { getMessaging, onBackgroundMessage } from 'firebase/messaging/sw'

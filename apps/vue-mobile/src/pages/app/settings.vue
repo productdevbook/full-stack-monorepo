@@ -35,7 +35,7 @@ const logoutButton = () => {
     <IonContent color="light" :fullscreen="true">
       <IonItemGroup class="border-horz">
         <IonItem lines="none">
-          {{loading}}
+          {{ loading }}
           <div v-if="result && !loading">
             {{ result.me.email }}
           </div>

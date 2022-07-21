@@ -21,7 +21,7 @@ export class UserService {
     return this.notiToken.saveToken(data, user)
   }
 
-  async sendToken(data: SendNotificationInput, user: JwtArgs) {
+  async sendToken(data: SendNotificationInput) {
     return await this.notiService.sendToDevice('test', { body: data.body, title: data.title, imageUrl: 'https://pngimg.com/uploads/free/free_PNG90754.png' }, data.token)
     // return this.notiToken.saveToken(data, user)
   }

@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { ConfigService } from '@nestjs/config'
 import { ValidationPipe } from '@nestjs/common'
-import requestIp from 'request-ip'
 import cookieParser from 'cookie-parser'
 import { i18nValidationErrorFactory } from 'nestjs-i18n'
 import watchFile from '../scripts/watch'

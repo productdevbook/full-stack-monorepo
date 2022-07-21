@@ -8,6 +8,7 @@ export class AuthorSubscriber implements EventSubscriber<User> {
   }
 
   async afterCreate(args: EventArgs<User>): Promise<void> {
+    /* eslint-disable no-console */
     console.log(args)
   }
 
