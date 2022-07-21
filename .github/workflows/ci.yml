@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  cache-and-install:
+    name: 📦 Install node modules
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+        
+      - name: 🛠 Vue Build
+        run: pnpm build
+
+      - name: 💪 Lint
+        run: pnpm lint      

@@ -1,0 +1,68 @@
+{
+  "name": "productdevbook",
+  "version": "0.2.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel --no-cache",
+    "dev:vue-storybook": "turbo run dev --parallel --no-cache --scope=@productdevbook/storybook-vue",
+    "dev:web": "turbo run dev --parallel --no-cache --scope=vue-web --scope=@oku/api --scope=app-nestjs --scope=oku-i18n",
+    "dev:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@oku/api  --scope=app-nestjs --scope=oku-i18n",
+    "dev:ui:web": "turbo run dev --parallel --no-cache --scope=vue-web --scope=@productdevbook/storybook-vue",
+    "dev:ui:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@productdevbook/storybook-vue",
+    "build": "turbo run build",
+    "build:nestjs": "turbo run build --parallel --scope=app-nestjs",
+    "build:vue-web": "turbo run build --parallel --scope=vue-web",
+    "build:vue-mobile": "turbo run build --parallel --scope=vue-mobile",
+    "app": "pnpm --filter vue-mobile refresh",
+    "run:android": "pnpm --filter vue-mobile ionic capacitor run android",
+    "run:ios": "pnpm --filter vue-mobile ionic capacitor run ios",
+    "reverse": "adb reverse tcp:4000 tcp:4000",
+    "mail:dev": "pnpm --filter mail dev",
+    "mail:build": "pnpm --filter mail build",
+    "ionic:build": "pnpm --filter nestjs build",
+    "api:dev": "pnpm --filter nestjs dev",
+    "db:create": "pnpm --filter app-nestjs migrate:create",
+    "db:update": "pnpm --filter app-nestjs migrate:update",
+    "db:push": "pnpm --filter app-nestjs migrate:push",
+    "db:delete": "pnpm --filter app-nestjs migrate:drop",
+    "db:data": "pnpm --filternestjs mikro-orm seeder:run",
+    "db:revert": "pnpm --filter app-nestjs migrate:revert",
+    "db:show": "pnpm --filter app-nestjs migrate:show",
+    "generate": "pnpm --filter @oku/api build && pnpm --filter api app:create",
+    "auth:build": "pnpm --filter @oku/auth build",
+    "api:build": "pnpm --filter @oku/api graphql-ts",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "clean": "turbo run clean --parallel --no-cache",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "git config core.autocrlf false"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "0.25.2",
+    "@types/ip": "1.1.0",
+    "@types/lodash": "4.14.182",
+    "chokidar": "^3.5.3",
+    "eslint": "8.20.0",
+    "ip": "2.0.0",
+    "prettier": "2.7.1",
+    "sass": " 1.53.0",
+    "turbo": "1.3.1",
+    "unbuild": "0.7.4"
+  },
+  "engines": {
+    "npm": "8.x",
+    "node": "16.x"
+  },
+  "packageManager": "pnpm@7.5.2",
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "0.27.2",
+    "date-fns": "2.28.0",
+    "lodash": "^4.17.21",
+    "pinia": "^2.0.16"
+  }
+}

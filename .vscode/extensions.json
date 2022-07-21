@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "mechatroner.rainbow-csv",
+        "apollographql.vscode-apollo",
+        "antfu.icons-carbon",
+        "dbaeumer.vscode-eslint",
+        "github.vscode-pull-request-github",
+        "antfu.iconify",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "antfu.theme-vitesse",
+        "vue.volar",
+        "redhat.vscode-yaml",
+        "github.copilot",
+        "naumovs.color-highlight",
+        "csstools.postcss",
+        "cossssmin.posthtml"
+    ]
+}

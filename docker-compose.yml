@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  monorepo:
+    image: postgres:latest
+    platform: linux/x86_64
+    restart: unless-stopped
+    ports:
+      - 62162:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - monorepo:/var/lib/postgresql/data
+
+  redisnonorepo:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_PASSWORD=redis_new
+    volumes:
+      - monorepo:/var/db/redis/data
+
+volumes:
+  monorepo:
+    driver: local
+    name: monorepo

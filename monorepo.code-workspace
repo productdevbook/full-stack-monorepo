@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "apps/vue-mobile"
+		},
+		{
+			"path": "apps/nestjs"
+		},
+		{
+			"path": "apps/vue-web"
+		},
+		{
+			"path": "apps/email"
+		},
+		{
+			"path": "packages/vue-design-system"
+		},
+		{
+			"path": "packages/vue-app"
+		},
+		{
+			"path": "packages/oku-i18n/src/locales"
+		}
+	],
+	"settings": {
+		"ionic.previewInEditor": false
+	}
+}

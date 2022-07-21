@@ -1,0 +1,83 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "schedule": [
+    "before 8am on Sunday"
+  ],
+  "packageRules": [
+    {
+      "matchPaths": [
+        "packages/apps/nestjs/package.json"
+      ],
+      "matchPackagePatterns": [
+        "nanoid"
+      ],
+      "groupName": "Esm nestjs",
+      "enabled": true
+    },
+    {
+      "groupName": "Types",
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "automerge": true
+    },
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "NPM dependencies (major)"
+    },
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "NPM dependencies (non-major)"
+    },
+    {
+      "packageNames": [
+        "typeorm"
+      ],
+      "groupName": "typeorm"
+    },
+    {
+      "packagePatterns": [
+        "^@mikro-orm/"
+      ],
+      "groupName": "mikroorm"
+    },
+    {
+      "packagePatterns": [
+        "^@nestjs/"
+      ],
+      "groupName": "NestJS"
+    },
+    {
+      "matchPaths": [
+        "packages/**"
+      ],
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "groupName": "packages dependencies",
+      "groupSlug": "packages-path",
+      "rangeStrategy": "replace"
+    },
+  ],
+  "ignoreDeps": [
+    "@maizzle/cli",
+    "@nestjs/cli"
+  ]
+}

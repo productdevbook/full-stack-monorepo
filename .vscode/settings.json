@@ -1,0 +1,19 @@
+{
+    // "css.format.enable": true,
+    // "scss.lint.unknownAtRules": "ignore",
+    // "css.lint.unknownAtRules": "ignore",
+    "explorer.fileNesting.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.linkedEditing": true,
+    "files.eol": "\n",
+    "eslint.enable": true,
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        }
+    ],
+    "ionic.previewInEditor": false,
+    "eslint.packageManager": "yarn",
+    "npm.packageManager": "yarn",
+    "git.mergeEditor": false
+}
