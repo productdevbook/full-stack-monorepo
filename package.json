@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "private": true,
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "turbo run dev --parallel --no-cache",
     "dev:vue-storybook": "turbo run dev --parallel --no-cache --scope=@productdevbook/storybook-vue",
@@ -8,6 +9,7 @@
     "dev:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@oku/api  --scope=app-nestjs --scope=oku-i18n",
     "dev:ui:web": "turbo run dev --parallel --no-cache --scope=vue-web --scope=@productdevbook/storybook-vue",
     "dev:ui:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@productdevbook/storybook-vue",
+    "dev:nestjs": "turbo run dev --filter=app-nestjs",
     "build": "turbo run build",
     "build:nestjs": "turbo run build --parallel --scope=app-nestjs",
     "build:vue-web": "turbo run build --parallel --scope=vue-web",
@@ -51,7 +53,11 @@
     "oku-i18n": "workspace:*",
     "@oku/tsconfig": "workspace:*",
     "vue-app": "workspace:*",
-    "vue-design-system": "workspace:*"
+    "vue-design-system": "workspace:*",
+    "@productdevbook/email": "workspace:*",
+    "app-nestjs": "workspace:*",
+    "vue-mobile": "workspace:*",
+    "vue-web": "workspace:*"
   },
   "engines": {
     "npm": "8.x",
