@@ -8,9 +8,11 @@ importers:
       '@oku/api': workspace:*
       '@oku/config': workspace:*
       '@oku/tsconfig': workspace:*
+      '@productdevbook/email': workspace:*
       '@types/ip': 1.1.0
       '@types/lodash': 4.14.182
       add: 2.0.6
+      app-nestjs: workspace:*
       axios: 0.27.2
       chokidar: 3.5.3
       date-fns: 2.29.1
@@ -25,6 +27,8 @@ importers:
       unbuild: 0.7.6
       vue-app: workspace:*
       vue-design-system: workspace:*
+      vue-mobile: workspace:*
+      vue-web: workspace:*
     dependencies:
       add: 2.0.6
       axios: 0.27.2
@@ -36,8 +40,10 @@ importers:
       '@oku/api': link:packages/oku-api
       '@oku/config': link:packages/oku-config
       '@oku/tsconfig': link:packages/oku-tsconfig
+      '@productdevbook/email': link:apps/email
       '@types/ip': 1.1.0
       '@types/lodash': 4.14.182
+      app-nestjs: link:apps/nestjs
       chokidar: 3.5.3
       eslint: 8.20.0
       ip: 2.0.0
@@ -48,6 +54,8 @@ importers:
       unbuild: 0.7.6
       vue-app: link:packages/vue-app
       vue-design-system: link:packages/vue-design-system
+      vue-mobile: link:apps/vue-mobile
+      vue-web: link:apps/vue-web
 
   apps/email:
     specifiers:
