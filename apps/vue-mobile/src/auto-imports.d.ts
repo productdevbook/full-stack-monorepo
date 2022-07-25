@@ -123,8 +123,6 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
-  const sizeClass: typeof import('../../../packages/vue-app/composables/size-class/index')['default']
-  const sizeProps: typeof import('../../../packages/vue-app/composables/size-class/index')['sizeProps']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
@@ -283,9 +281,7 @@ declare global {
   const useSendLocalNotification: typeof import('./composables/useSendLocalNotification')['default']
   const useSessionStorage: typeof import('@vueuse/core')['useSessionStorage']
   const useShare: typeof import('@vueuse/core')['useShare']
-  const useShortcut: typeof import('../../../packages/vue-app/composables/use-shortcut/index')['default']
   const useSignupMutation: typeof import('../../../packages/oku-api/types/vue-apollo')['useSignupMutation']
-  const useSizeClass: typeof import('../../../packages/vue-app/composables/size-class/index')['useSizeClass']
   const useSlots: typeof import('vue')['useSlots']
   const useSpeechRecognition: typeof import('@vueuse/core')['useSpeechRecognition']
   const useSpeechSynthesis: typeof import('@vueuse/core')['useSpeechSynthesis']
@@ -472,8 +468,6 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
-    readonly sizeClass: UnwrapRef<typeof import('../../../packages/vue-app/composables/size-class/index')['default']>
-    readonly sizeProps: UnwrapRef<typeof import('../../../packages/vue-app/composables/size-class/index')['sizeProps']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
@@ -632,9 +626,7 @@ declare module '@vue/runtime-core' {
     readonly useSendLocalNotification: UnwrapRef<typeof import('./composables/useSendLocalNotification')['default']>
     readonly useSessionStorage: UnwrapRef<typeof import('@vueuse/core')['useSessionStorage']>
     readonly useShare: UnwrapRef<typeof import('@vueuse/core')['useShare']>
-    readonly useShortcut: UnwrapRef<typeof import('../../../packages/vue-app/composables/use-shortcut/index')['default']>
     readonly useSignupMutation: UnwrapRef<typeof import('../../../packages/oku-api/types/vue-apollo')['useSignupMutation']>
-    readonly useSizeClass: UnwrapRef<typeof import('../../../packages/vue-app/composables/size-class/index')['useSizeClass']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useSpeechRecognition: UnwrapRef<typeof import('@vueuse/core')['useSpeechRecognition']>
     readonly useSpeechSynthesis: UnwrapRef<typeof import('@vueuse/core')['useSpeechSynthesis']>
