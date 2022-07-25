@@ -76,7 +76,7 @@ importers:
       '@nestjs/common': 9.0.5
       '@nestjs/config': 2.2.0
       '@nestjs/core': 9.0.5
-      '@nestjs/graphql': 10.0.19
+      '@nestjs/graphql': 10.0.21
       '@nestjs/jwt': 9.0.0
       '@nestjs/passport': 9.0.0
       '@nestjs/platform-express': 9.0.5
@@ -155,12 +155,12 @@ importers:
       '@mikro-orm/reflection': 5.2.3_@mikro-orm+core@5.2.3
       '@mikro-orm/sql-highlighter': 1.0.1
       '@nestjs-modules/mailer': 1.7.1_sqjqwtg3yjhkhq2pesj7tejbwu
-      '@nestjs/apollo': 10.0.19_w75exdogq3m7r3fdiinpqubdqm
+      '@nestjs/apollo': 10.0.19_hwghfopm4tjy5ji5hl5bghhxny
       '@nestjs/axios': 0.1.0_d3lkybs743xih4gqxxdbtu2qq4
       '@nestjs/common': 9.0.5_allg6cauirbqzgqcmexy2wdnoq
       '@nestjs/config': 2.2.0_d3lkybs743xih4gqxxdbtu2qq4
       '@nestjs/core': 9.0.5_kqlsqbigaolinktvzctrbordee
-      '@nestjs/graphql': 10.0.19_626yxdfqt525ii7rq6gdhpuvx4
+      '@nestjs/graphql': 10.0.21_626yxdfqt525ii7rq6gdhpuvx4
       '@nestjs/passport': 9.0.0_qdtlkii22m5qqe54blp4xseshi
       '@nestjs/platform-express': 9.0.5_yhkp7kxuauoq6imzcegikmb6ju
       apollo-server-cache-redis: 3.3.1
@@ -5822,7 +5822,7 @@ packages:
       - supports-color
     dev: false
 
-  /@nestjs/apollo/10.0.19_w75exdogq3m7r3fdiinpqubdqm:
+  /@nestjs/apollo/10.0.19_hwghfopm4tjy5ji5hl5bghhxny:
     resolution: {integrity: sha512-uj10uZOQYBeUMYnKma0gpBSFDubZnXp4mqIRMJFNTF/0lEywFUEmdIc4IiRFSN3C4SY4EDIbUyDAMDRE3Ablew==}
     peerDependencies:
       '@apollo/gateway': ^0.44.1 || ^0.46.0 || ^0.48.0 || ^0.49.0 || ^0.50.0 || ^2.0.0
@@ -5845,7 +5845,7 @@ packages:
     dependencies:
       '@nestjs/common': 9.0.5_allg6cauirbqzgqcmexy2wdnoq
       '@nestjs/core': 9.0.5_kqlsqbigaolinktvzctrbordee
-      '@nestjs/graphql': 10.0.19_626yxdfqt525ii7rq6gdhpuvx4
+      '@nestjs/graphql': 10.0.21_626yxdfqt525ii7rq6gdhpuvx4
       apollo-server-express: 3.10.0_graphql@16.5.0
       graphql: 16.5.0
       iterall: 1.3.0
@@ -5975,8 +5975,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@nestjs/graphql/10.0.19_626yxdfqt525ii7rq6gdhpuvx4:
-    resolution: {integrity: sha512-fUiByVApFu3HK8C3OJnzHMwVo2EXjucxFGaxxSFiMcH/mI9WijL5UhPnxKeDUl6iNoiK8aAFgFtmth+v71aqPQ==}
+  /@nestjs/graphql/10.0.21_626yxdfqt525ii7rq6gdhpuvx4:
+    resolution: {integrity: sha512-wrc3KFT5Tj+HieAR8IOgvtaQRMHpjInuBaykq76Drn4do6qoGZ509DDw7LQ8U3E2VWXe8F4ItnyxskBphoqEgA==}
     peerDependencies:
       '@apollo/subgraph': ^0.1.5 || ^0.3.0 || ^0.4.0 || ^2.0.0
       '@nestjs/common': ^8.2.3 || ^9.0.0
