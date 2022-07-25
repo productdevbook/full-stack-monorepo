@@ -1,11 +1,6 @@
 {
-  "name": "productdevbook",
   "version": "0.2.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "dev": "turbo run dev --parallel --no-cache",
     "dev:vue-storybook": "turbo run dev --parallel --no-cache --scope=@productdevbook/storybook-vue",
@@ -50,7 +45,13 @@
     "prettier": "2.7.1",
     "sass": "1.54.0",
     "turbo": "1.3.4",
-    "unbuild": "0.7.6"
+    "unbuild": "0.7.6",
+    "@oku/api": "workspace:*",
+    "@oku/config": "workspace:*",
+    "oku-i18n": "workspace:*",
+    "@oku/tsconfig": "workspace:*",
+    "vue-app": "workspace:*",
+    "vue-design-system": "workspace:*"
   },
   "engines": {
     "npm": "8.x",

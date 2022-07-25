@@ -5,6 +5,9 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': 0.25.2
+      '@oku/api': workspace:*
+      '@oku/config': workspace:*
+      '@oku/tsconfig': workspace:*
       '@types/ip': 1.1.0
       '@types/lodash': 4.14.182
       add: 2.0.6
@@ -14,11 +17,14 @@ importers:
       eslint: 8.20.0
       ip: 2.0.0
       lodash: 4.17.21
+      oku-i18n: workspace:*
       pinia: 2.0.16
       prettier: 2.7.1
       sass: 1.54.0
       turbo: 1.3.4
       unbuild: 0.7.6
+      vue-app: workspace:*
+      vue-design-system: workspace:*
     dependencies:
       add: 2.0.6
       axios: 0.27.2
@@ -27,15 +33,21 @@ importers:
       pinia: 2.0.16
     devDependencies:
       '@antfu/eslint-config': 0.25.2_eslint@8.20.0
+      '@oku/api': link:packages/oku-api
+      '@oku/config': link:packages/oku-config
+      '@oku/tsconfig': link:packages/oku-tsconfig
       '@types/ip': 1.1.0
       '@types/lodash': 4.14.182
       chokidar: 3.5.3
       eslint: 8.20.0
       ip: 2.0.0
+      oku-i18n: link:packages/oku-i18n
       prettier: 2.7.1
       sass: 1.54.0
       turbo: 1.3.4
       unbuild: 0.7.6
+      vue-app: link:packages/vue-app
+      vue-design-system: link:packages/vue-design-system
 
   apps/email:
     specifiers:
