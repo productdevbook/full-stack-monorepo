@@ -26,6 +26,7 @@ import { GqlConfigService } from './config/graphql.config'
 import { AuthResolver } from './app.resolver'
 import { TranslateModule } from './modules/translate/translate.module'
 import { IConfig } from './config/interfaces/config.interface'
+import { CaslModule } from './modules/casl/casl.module'
 
 @Module({
   imports: [
@@ -88,7 +89,7 @@ import { IConfig } from './config/interfaces/config.interface'
         return options
       },
     }),
-
+    CaslModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtService, AuthResolver, {
