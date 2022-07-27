@@ -3,23 +3,13 @@ import { Cascade, Collection, Entity, OneToMany, OneToOne, Property, Unique } fr
 import { DateTimeResolver } from 'graphql-scalars'
 import { BaseModel } from './base.model'
 
-// import { UserRole } from './user-role.entity'
+import { UserRole } from './user-role.entity'
 import { UserSetting } from './user-setting.entity'
 import { UserDeviceEntity } from './user-device.entity'
 import { NotificationToken } from './notification-token.entity'
+import { Role } from './role.entity'
 import { TimestampType } from '@/core/transformer'
 import { EncryptedType } from '@/core/utils/encrypted-type'
-
-// const transformer: Record<'date' | 'bigint', ValueTransformer> = {
-//   date: {
-//     from: (date: string | null) => date && new Date(parseInt(date, 10)),
-//     to: (date?: Date) => date?.valueOf().toString(),
-//   },
-//   bigint: {
-//     from: (bigInt: string | null) => bigInt && parseInt(bigInt, 10),
-//     to: (bigInt?: number) => bigInt?.toString(),
-//   },
-// }
 
 @Entity({ tableName: 'user' })
 @ObjectType()
@@ -32,7 +22,7 @@ export class User extends BaseModel {
   @Field(() => String, { description: 'Example field (username)' })
     username!: string
 
-  @Property({ type: EncryptedType, nullable: false })
+  @Property({ type: 'varchar', nullable: false })
   @Field(() => String, { description: 'Example field (name)' })
     name!: string
 
@@ -63,14 +53,13 @@ export class User extends BaseModel {
 
   @Property({ type: 'bool', nullable: false, default: false })
   @Field(() => String, { description: 'Example field (placeholder)' })
-    is_terms_accepted!: boolean
+    isTermsAccepted!: boolean
 
   @Field(() => DateTimeResolver, {
     description: 'last login time',
   })
   @Property({
     type: TimestampType,
-    name: 'last_login_at',
     comment: 'last login time',
     default: null,
   })
@@ -80,7 +69,6 @@ export class User extends BaseModel {
     description: 'Last login IP',
   })
   @Property({
-    name: 'last_login_ip',
     comment: 'Last login IP',
     default: null,
   })
@@ -104,12 +92,12 @@ export class User extends BaseModel {
   @OneToMany({ entity: () => NotificationToken, mappedBy: (token: NotificationToken) => token.createdBy, cascade: [Cascade.ALL], orphanRemoval: true })
     notificationToken = new Collection<NotificationToken>(this)
 
-  // @OneToMany(() => UserRole, p => p.role, {
-  //   eager: true,
-  //   nullable: false,
-  // })
-  // @Field(() => [UserRole], { nullable: false })
-  //   userRoles!: UserRole[]
+  @OneToMany(() => Role, p => p.users, {
+    eager: true,
+    nullable: false,
+  })
+  @Field(() => [Role], { nullable: false })
+    roles = new Collection<Role>(this)
 
   @Field(() => UserSetting, { nullable: false })
   @OneToOne(() => UserSetting, user => user.user, {

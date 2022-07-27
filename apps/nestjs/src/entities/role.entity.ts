@@ -1,9 +1,10 @@
-import { Collection, Entity, OneToMany, Property, Unique } from '@mikro-orm/core'
+import { Collection, Entity, ManyToMany, OneToMany, Property, Unique } from '@mikro-orm/core'
 
 import { Field, ObjectType } from '@nestjs/graphql'
 import { BaseModel } from './base.model'
 import { UserRole } from './user-role.entity'
 import { PageMenuRole } from './page-menu-role.entity'
+import { User } from './user.entity'
 
 @Entity({ tableName: 'role' })
 @Unique({ properties: ['name'] })
@@ -13,20 +14,9 @@ export class Role extends BaseModel {
   @Field(() => String, { nullable: false })
     name!: string
 
-  @Property({ type: 'varchar', length: 200, nullable: true })
-  @Field(() => String, { nullable: true })
-    name_en?: string | null
-
-  // @OneToMany(() => UserRole, r => r.role, {
-  //   eager: true,
-  //   nullable: false,
-  // })
-  // @Property({ type: 'json', nullable: true })
-  // @Field(() => GraphQLJSON, { nullable: true })
-  //   permissions!: object
-
-  @Field(() => [UserRole], { nullable: false })
-    userRoles?: UserRole[]
+  @Property({ type: 'varchar', length: 200, nullable: false })
+  @Field(() => String, { nullable: false })
+    description!: string
 
   @OneToMany(() => PageMenuRole, p => p.role, {
     eager: true,
@@ -35,4 +25,8 @@ export class Role extends BaseModel {
   })
   @Field(() => [PageMenuRole], { nullable: true })
     pageMenus = new Collection<PageMenuRole>(this)
+
+  @ManyToMany(() => User, 'roles', { owner: true })
+  @Field(() => [User], { nullable: true })
+    users = new Collection<UserRole>(this)
 }

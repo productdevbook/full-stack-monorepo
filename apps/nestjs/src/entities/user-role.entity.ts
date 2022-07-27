@@ -14,7 +14,7 @@ export class UserRole extends BaseModel {
     cascade: [Cascade.REMOVE],
   })
   @Field(() => Role, { nullable: false })
-    role?: Role
+    role!: Role
 
   @ManyToOne(() => User, {
     eager: false,
@@ -22,5 +22,5 @@ export class UserRole extends BaseModel {
     onDelete: 'CASCADE',
   })
   @Field(() => User, { nullable: false })
-    user?: User
+    user!: User
 }
