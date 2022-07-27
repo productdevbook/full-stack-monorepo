@@ -1,15 +1,13 @@
 import { Field, HideField, ObjectType } from '@nestjs/graphql'
-import { Cascade, Collection, Entity, OneToMany, OneToOne, Property, Unique } from '@mikro-orm/core'
+import { Cascade, Collection, Entity, ManyToMany, OneToMany, OneToOne, Property, Unique } from '@mikro-orm/core'
 import { DateTimeResolver } from 'graphql-scalars'
 import { BaseModel } from './base.model'
 
-import { UserRole } from './user-role.entity'
 import { UserSetting } from './user-setting.entity'
 import { UserDeviceEntity } from './user-device.entity'
 import { NotificationToken } from './notification-token.entity'
 import { Role } from './role.entity'
 import { TimestampType } from '@/core/transformer'
-import { EncryptedType } from '@/core/utils/encrypted-type'
 
 @Entity({ tableName: 'user' })
 @ObjectType()
@@ -92,11 +90,8 @@ export class User extends BaseModel {
   @OneToMany({ entity: () => NotificationToken, mappedBy: (token: NotificationToken) => token.createdBy, cascade: [Cascade.ALL], orphanRemoval: true })
     notificationToken = new Collection<NotificationToken>(this)
 
-  @OneToMany(() => Role, p => p.users, {
-    eager: true,
-    nullable: false,
-  })
-  @Field(() => [Role], { nullable: false })
+  @ManyToMany(() => Role, role => role.users)
+  @Field(() => [Role], { nullable: true })
     roles = new Collection<Role>(this)
 
   @Field(() => UserSetting, { nullable: false })

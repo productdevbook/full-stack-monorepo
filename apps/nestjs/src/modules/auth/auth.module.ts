@@ -44,6 +44,6 @@ import { UserSetting } from '@/entities/user-setting.entity'
     SharedModule,
   ],
   providers: [AuthResolver, AuthService, JwtStrategy, AuthRepository, UserDeviceRepository],
-  exports: [AuthService],
+  exports: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

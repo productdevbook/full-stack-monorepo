@@ -196,14 +196,14 @@ type Role {
   createdAt: DateTime!
   deleted: Boolean!
   deletedAt: DateTime
+  description: String!
   disabled: Boolean!
   hidden: Boolean!
   id: ID!
   name: String!
-  name_en: String
   pageMenus: [PageMenuRole!]
   updatedAt: DateTime
-  userRoles: [UserRole!]!
+  users: [User!]
 }
 
 input SendNotificationInput {
@@ -297,6 +297,18 @@ type State {
   userSettings: [UserSetting!]!
 }
 
+type Subject {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+}
+
 input TerminateSessionInput {
   jti: String!
 }
@@ -334,7 +346,7 @@ type User {
   image: String
 
   """Example field (placeholder)"""
-  is_terms_accepted: String!
+  isTermsAccepted: String!
 
   """last login time"""
   lastLoginAt: DateTime
@@ -348,6 +360,7 @@ type User {
   """User notification tokens"""
   notificationToken: [NotificationToken!]
   providerAccountId: String
+  roles: [Role!]
   updatedAt: DateTime
   userSetting: UserSetting!
 
@@ -446,19 +459,6 @@ type UserDevice {
 
   """device UA"""
   userAgent: UserAgent!
-}
-
-type UserRole {
-  archived: Boolean!
-  createdAt: DateTime!
-  deleted: Boolean!
-  deletedAt: DateTime
-  disabled: Boolean!
-  hidden: Boolean!
-  id: ID!
-  role: Role!
-  updatedAt: DateTime
-  user: User!
 }
 
 type UserSetting {

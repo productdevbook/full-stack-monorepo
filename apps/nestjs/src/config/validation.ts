@@ -13,7 +13,7 @@ export const validationSchema = Joi.object({
   JWT_PRIVATE_KEY: Joi.string().required(),
   JWT_EXPIRES_IN: Joi.string().required(),
   JWT_AUDIENCE: Joi.string().required(),
-  JWT_ISSUER: Joi.string().required(),
+  JWT_ISSUER: Joi.string(),
 
   JWT_COOKIE_NAME: Joi.string().required(),
   JWT_REFRESH_EXPIRES_IN: Joi.string().required(),
