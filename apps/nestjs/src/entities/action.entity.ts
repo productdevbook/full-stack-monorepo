@@ -4,12 +4,7 @@ import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
 import { BaseModel } from './base.model'
 import { Role } from './role.entity'
 import { Subject } from './subject.entity'
-
-export enum ActionEnum {
-  ADMIN = 'admin',
-  MODERATOR = 'moderator',
-  USER = 'user',
-}
+import { ActionEnum } from '@/modules/casl/interfaces/action.enum'
 
 @Entity({ tableName: 'action' })
 @ObjectType()
