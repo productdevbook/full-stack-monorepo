@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   monorepo:
     image: postgres:latest
@@ -13,6 +12,7 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - monorepo:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
 
   redisnonorepo:
     image: redis:latest
