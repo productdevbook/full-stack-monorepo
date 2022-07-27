@@ -32,7 +32,7 @@ export class AuthRepository {
       ...data,
       lastLoginAt: new Date(),
       createdAt: new Date(),
-      is_terms_accepted: data.isTermsAccepted,
+      isTermsAccepted: data.isTermsAccepted,
     })
 
     const newSettings = this.userSettingRepo.create({
