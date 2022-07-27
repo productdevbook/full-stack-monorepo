@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { MikroOrmModule } from '@mikro-orm/nestjs'
+import { CaslModule } from '../casl/casl.module'
 import { UserService } from './user.service'
 import { UserResolver } from './user.resolver'
 import { UserRepository } from './repositories/user.repo'
@@ -12,6 +13,7 @@ import { NotificationService } from '@/shared/services/notification.service'
   imports: [
     MikroOrmModule.forFeature({ entities: [User, NotificationToken] }),
     SharedModule,
+    CaslModule,
   ],
   providers: [UserResolver, UserService, UserRepository, NotificationTokenRepository, NotificationService],
   exports: [UserService, UserRepository],

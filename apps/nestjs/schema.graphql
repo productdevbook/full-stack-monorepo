@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+enum ActionEnum {
+  CREATE
+  DELETE
+  MANAGE
+  READ
+  UPDATE
+}
+
 type City {
   archived: Boolean!
   country: Country
@@ -105,6 +113,8 @@ type Menu {
 }
 
 type Mutation {
+  createSubject(data: SubjectInput!): Subject!
+  deleteSubject(id: String!): Subject!
   forgotPassword(data: ForgotPasswordInput!): Boolean!
   logout: Boolean!
   refreshToken(data: RefreshTokenInput!): TokenResponse!
@@ -114,6 +124,7 @@ type Mutation {
   signIn(data: SignInInput!): TokenResponse!
   signUp(data: SignUpInput!): User!
   terminateSession(data: TerminateSessionInput!): Boolean!
+  updateSubject(data: UpdateSubjectInput!, id: String!): Subject!
 }
 
 type NotificationToken {
@@ -175,10 +186,26 @@ type PageMenuRole {
   updatedAt: DateTime
 }
 
+type Permission {
+  action: [ActionEnum!]
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  roles: [Role!]!
+  subject: [Subject!]
+  updatedAt: DateTime
+}
+
 type Query {
   example(data: ExampleInput!): String!
   me: User!
   sessions: [Session!]!
+  subject(name: String!): Subject!
+  subjects: [Subject!]!
 }
 
 input RefreshTokenInput {
@@ -202,6 +229,7 @@ type Role {
   id: ID!
   name: String!
   pageMenus: [PageMenuRole!]
+  permissions: [Permission!]
   updatedAt: DateTime
   users: [User!]
 }
@@ -309,6 +337,10 @@ type Subject {
   updatedAt: DateTime
 }
 
+input SubjectInput {
+  name: String!
+}
+
 input TerminateSessionInput {
   jti: String!
 }
@@ -319,6 +351,10 @@ type TokenResponse {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdateSubjectInput {
+  name: String
 }
 
 type User {

@@ -2,9 +2,9 @@ import { Collection, Entity, ManyToMany, OneToMany, Property, Unique } from '@mi
 
 import { Field, ObjectType } from '@nestjs/graphql'
 import { BaseModel } from './base.model'
-import { UserRole } from './user-role.entity'
 import { PageMenuRole } from './page-menu-role.entity'
 import { User } from './user.entity'
+import { Permission } from './permission.entity'
 
 @Entity({ tableName: 'role' })
 @Unique({ properties: ['name'] })
@@ -28,5 +28,9 @@ export class Role extends BaseModel {
 
   @ManyToMany(() => User, 'roles', { owner: true })
   @Field(() => [User], { nullable: true })
-    users = new Collection<UserRole>(this)
+    users = new Collection<User>(this)
+
+  @ManyToMany(() => Permission, permission => permission.roles)
+  @Field(() => [Permission], { nullable: true })
+    permissions = new Collection<Permission>(this)
 }

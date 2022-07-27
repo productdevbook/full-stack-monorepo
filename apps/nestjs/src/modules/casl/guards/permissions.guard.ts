@@ -3,7 +3,6 @@ import { Reflector } from '@nestjs/core'
 import { AppAbilityType } from '@/modules/casl/interfaces/app-ability.type'
 import { PERMISSION_CHECKER_KEY, RequiredPermission } from '@/modules/casl/decorators/check-permissions.decorator'
 import { CaslAbilityFactory } from '@/modules/casl/casl-ability.factory'
-import { JwtStrategy } from '@/modules/auth/strategy/jwt.strategy'
 import { RequiredPermissionType } from '@/modules/casl/interfaces/required-permission.type'
 
 @Injectable()
@@ -11,7 +10,6 @@ export class PermissionsGuard implements CanActivate {
   constructor(
     private reflector: Reflector,
     private abilityFactory: CaslAbilityFactory,
-    private jwtStrategy: JwtStrategy,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -21,12 +19,10 @@ export class PermissionsGuard implements CanActivate {
         context.getHandler(),
       ) || []
 
-    const req = context.switchToHttp().getRequest()
-    const jwtData = await this.jwtStrategy.validate(req.headers.authorization)
+    const { user } = context.switchToHttp().getRequest().req
 
     const ability = await this.abilityFactory.createForUser(
-      // add permissions to jwt payload, with actions and subject relations
-      jwtData.permissions,
+      user.permissions,
     )
 
     return requiredPermissions.every(permission =>

@@ -15,8 +15,8 @@ export class Permission extends BaseModel {
   @Field(() => [Subject], { nullable: true })
     subject = new Collection<Subject>(this)
 
-  @ManyToMany(() => Role)
-  @Field(() => [Role], { nullable: true })
+  @ManyToMany(() => Role, 'permissions', { owner: true })
+  @Field(() => [Role])
     roles = new Collection<Role>(this)
 
   @Enum(() => ActionEnum)
