@@ -1,5 +1,5 @@
 import { InputType, PartialType } from '@nestjs/graphql'
-import { CreateRoleInput } from './create-role.input'
+import { CreateAdminRoleInput } from './create-role.input'
 
 @InputType('UpdateRoleInput')
-export class UpdateRoleInput extends PartialType(CreateRoleInput) {}
+export class UpdateRoleInput extends PartialType(CreateAdminRoleInput) {}

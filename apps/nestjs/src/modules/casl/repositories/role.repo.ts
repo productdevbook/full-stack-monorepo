@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@mikro-orm/nestjs'
 import { EntityRepository } from '@mikro-orm/postgresql'
-import { CreateRoleInput } from '../inputs/role/create-role.input'
+import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
 import { PermissionRepository } from './permission.repo'
 import { Role } from '@/entities'
@@ -14,7 +14,7 @@ export class RoleRepository {
     private readonly permissionRepo: PermissionRepository,
   ) { }
 
-  async createRole(createRoleInput: CreateRoleInput): Promise<Role> {
+  async createAdminRole(createRoleInput: CreateAdminRoleInput): Promise<Role> {
     const newRole = this.roleRepo.create(createRoleInput)
     await this.roleRepo.persistAndFlush(newRole)
     return newRole

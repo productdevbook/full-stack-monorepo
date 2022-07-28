@@ -49,6 +49,11 @@ type Country {
   userSettings: [UserSetting!]!
 }
 
+input CreateAdminRoleInput {
+  description: String!
+  name: String!
+}
+
 input CreateNotificationTokenInput {
   """Example field (placeholder)"""
   deviceId: String!
@@ -113,6 +118,7 @@ type Menu {
 }
 
 type Mutation {
+  addAdminRoleToUser(data: CreateAdminRoleInput!): Role!
   createSubject(data: SubjectInput!): Subject!
   deleteSubject(id: String!): Subject!
   forgotPassword(data: ForgotPasswordInput!): Boolean!
