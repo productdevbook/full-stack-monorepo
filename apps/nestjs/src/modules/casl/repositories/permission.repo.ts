@@ -3,6 +3,7 @@ import { InjectRepository } from '@mikro-orm/nestjs'
 import { EntityRepository } from '@mikro-orm/postgresql'
 import { CreatePermissionInput } from '../inputs/permission/create-permission.input'
 import { UpdatePermissionInput } from '../inputs/permission/update-permission.input'
+import { SubjectRepository } from './subject.repo'
 import { Permission } from '@/entities'
 
 @Injectable()
@@ -10,10 +11,12 @@ export class PermissionRepository {
   constructor(
     @InjectRepository(Permission)
     private readonly permissionRepo: EntityRepository<Permission>,
+    private readonly subjectRepo: SubjectRepository,
   ) { }
 
-  async createPermission(createPermissionInput: CreatePermissionInput): Promise<Permission> {
-    const newPermission = this.permissionRepo.create(createPermissionInput)
+  async createPermission(subject_id: string, createPermissionInput: CreatePermissionInput): Promise<Permission> {
+    const subject = await this.subjectRepo.getSubjectById(subject_id)
+    const newPermission = this.permissionRepo.create({ ...createPermissionInput, subject })
     await this.permissionRepo.persistAndFlush(newPermission)
     return newPermission
   }

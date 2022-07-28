@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common'
 import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
-import { RoleRepository } from '../repositories'
-import { Role } from '@/entities'
+import { CaslUserRepository, RoleRepository } from '../repositories'
+import { Role, User } from '@/entities'
 
 @Injectable()
 export class RoleService {
-  constructor(private readonly roleRepository: RoleRepository) {}
+  constructor(private readonly roleRepository: RoleRepository,
+    private readonly userRepo: CaslUserRepository) {}
 
   async createAdminRole(createRoleInput: CreateAdminRoleInput): Promise<Role> {
     return await this.roleRepository.createAdminRole(createRoleInput)
@@ -18,6 +19,14 @@ export class RoleService {
 
   async removePermissionFromRole(roleName: string, permissionId: string): Promise<Role> {
     return await this.roleRepository.removePermissionFromRole(roleName, permissionId)
+  }
+
+  async addRoleToUser(roleName: string, userName: string): Promise<User> {
+    return await this.userRepo.addRoleToUser(roleName, userName)
+  }
+
+  async removeRoleFromUser(roleName: string, userName: string): Promise<User> {
+    return await this.userRepo.removeRoleFromUser(roleName, userName)
   }
 
   async getAllRoles(): Promise<Role[]> {

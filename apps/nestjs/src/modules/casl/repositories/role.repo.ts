@@ -20,14 +20,14 @@ export class RoleRepository {
     return newRole
   }
 
+  // doesnt work
   async addPermissionToRole(roleName: string, permissionId: string): Promise<Role> {
     const role = await this.getRoleByName(roleName)
     const permission = await this.permissionRepo.getPermissionById(permissionId)
-    const updatedRole = this.roleRepo.assign(role, { permissions: [...role.permissions, permission] })
 
     return await this.roleRepo.createQueryBuilder()
-      .where({ roleName })
-      .update(updatedRole)
+      .update({ permissions: [...role.permissions, permission] })
+      .where({ name: roleName })
       .execute()
   }
 
@@ -37,7 +37,7 @@ export class RoleRepository {
     const permissions = role.permissions.toArray()
 
     return await this.roleRepo.createQueryBuilder()
-      .where({ roleName })
+      .where({ name: roleName })
       .update({ permissions: permissions.filter(data => data.action !== permission.action) })
       .execute()
   }

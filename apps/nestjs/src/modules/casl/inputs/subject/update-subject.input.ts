@@ -1,5 +1,5 @@
 import { InputType, PartialType } from '@nestjs/graphql'
 import { CreateSubjectInput } from './create-subject.input'
 
-@InputType('UpdateSubjectInput')
+@InputType()
 export class UpdateSubjectInput extends PartialType(CreateSubjectInput) {}

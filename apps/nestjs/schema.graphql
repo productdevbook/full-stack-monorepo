@@ -62,6 +62,14 @@ input CreateNotificationTokenInput {
   token: String!
 }
 
+input CreatePermissionInput {
+  action: ActionEnum!
+}
+
+input CreateSubjectInput {
+  name: String!
+}
+
 type Currency {
   archived: Boolean!
   code: String!
@@ -118,18 +126,27 @@ type Menu {
 }
 
 type Mutation {
-  addAdminRoleToUser(data: CreateAdminRoleInput!): Role!
-  createSubject(data: SubjectInput!): Subject!
+  addPermissionToRole(permissionId: String!, rolename: String!): Role!
+  addRoleToUser(rolename: String!, username: String!): Role!
+  createAdminRole(data: CreateAdminRoleInput!): Role!
+  createPermission(data: CreatePermissionInput!, subject_id: String!): Permission!
+  createSubject(data: CreateSubjectInput!): Subject!
+  deletePermission(id: String!): Permission!
+  deleteRole(id: String!): Role!
   deleteSubject(id: String!): Subject!
   forgotPassword(data: ForgotPasswordInput!): Boolean!
   logout: Boolean!
   refreshToken(data: RefreshTokenInput!): TokenResponse!
+  removePermissionFromRole(permissionId: String!, rolename: String!): Role!
+  removeRoleFromUser(rolename: String!, username: String!): Role!
   resetPassword(data: ResetPasswordInput!): Boolean!
   saveNotificationToken(data: CreateNotificationTokenInput!): NotificationToken!
   sendNotificationToken(data: SendNotificationInput!): Boolean!
   signIn(data: SignInInput!): TokenResponse!
   signUp(data: SignUpInput!): User!
   terminateSession(data: TerminateSessionInput!): Boolean!
+  updatePermission(data: UpdatePermissionInput!, id: String!): Permission!
+  updateRole(data: UpdateRoleInput!, id: String!): Role!
   updateSubject(data: UpdateSubjectInput!, id: String!): Subject!
 }
 
@@ -209,6 +226,9 @@ type Permission {
 type Query {
   example(data: ExampleInput!): String!
   me: User!
+  permissions: [Permission!]!
+  role(name: String!): Role!
+  roles: [Role!]!
   sessions: [Session!]!
   subject(name: String!): Subject!
   subjects: [Subject!]!
@@ -343,10 +363,6 @@ type Subject {
   updatedAt: DateTime
 }
 
-input SubjectInput {
-  name: String!
-}
-
 input TerminateSessionInput {
   jti: String!
 }
@@ -357,6 +373,15 @@ type TokenResponse {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdatePermissionInput {
+  action: ActionEnum
+}
+
+input UpdateRoleInput {
+  description: String
+  name: String
 }
 
 input UpdateSubjectInput {

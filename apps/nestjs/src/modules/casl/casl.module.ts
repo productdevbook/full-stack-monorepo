@@ -7,10 +7,11 @@ import { PermissionService } from './services/permission.service'
 import { SubjectService } from './services/subject.service'
 import { SubjectResolver } from './resolvers/subject.resolver'
 import { CaslUserRepository } from './repositories/user.repo'
+import { CalsRoleResolver } from './resolvers/role.resolver'
+import { CalsPermissionResolver } from './resolvers/permission.resolver'
 import { Permission, Role, Subject, User } from '@/entities'
 import { PermissionsGuard } from '@/modules/casl/guards/permissions.guard'
 import { CaslAbilityFactory } from '@/modules/casl/casl-ability.factory'
-import { CalsRoleResolver } from './resolvers/role.resolver'
 
 const repositories = [
   RoleRepository,
@@ -28,6 +29,7 @@ const services = [
 const resolvers = [
   SubjectResolver,
   CalsRoleResolver,
+  CalsPermissionResolver,
 ]
 
 @Module({
