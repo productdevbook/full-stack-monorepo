@@ -30,7 +30,7 @@ export class Role extends BaseModel {
   @Field(() => [User], { nullable: true })
     users = new Collection<User>(this)
 
-  @ManyToMany(() => Permission, permission => permission.roles)
+  @ManyToMany(() => Permission, 'roles', { owner: true })
   @Field(() => [Permission], { nullable: true })
     permissions = new Collection<Permission>(this)
 }
