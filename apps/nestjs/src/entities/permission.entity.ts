@@ -12,7 +12,7 @@ export class Permission extends BaseModel {
     eager: true,
     nullable: true,
   })
-  @Field(() => [Subject], { nullable: true })
+  @Field(() => Subject)
     subject = new Collection<Subject>(this)
 
   @ManyToMany(() => Role, 'permissions', { owner: true })
@@ -20,6 +20,6 @@ export class Permission extends BaseModel {
     roles = new Collection<Role>(this)
 
   @Enum(() => ActionEnum)
-  @Field(() => [ActionEnum], { nullable: true })
+  @Field(() => ActionEnum)
     action!: ActionEnum
 }

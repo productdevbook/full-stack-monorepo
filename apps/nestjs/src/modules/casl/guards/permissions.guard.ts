@@ -12,6 +12,12 @@ export class PermissionsGuard implements CanActivate {
     private abilityFactory: CaslAbilityFactory,
   ) {}
 
+  /**
+   * It gets the required permissions from the decorator, creates an ability object for the user, and
+   * then checks if the user has the required permissions
+   * @param {ExecutionContext} context - ExecutionContext - This is the context of the request.
+   * @returns A boolean value.
+   */
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const requiredPermissions: RequiredPermissionType[]
       = this.reflector.get<RequiredPermission[]>(
@@ -30,6 +36,13 @@ export class PermissionsGuard implements CanActivate {
     )
   }
 
+  /**
+   * It returns true if the ability can do the permission
+   * @param {AppAbilityType} ability - AppAbilityType - This is the ability object that we created in
+   * the previous step.
+   * @param {RequiredPermissionType} permission - This is the permission that you want to check.
+   * @returns A boolean value
+   */
   private static isAllowed(
     ability: AppAbilityType,
     permission: RequiredPermissionType,

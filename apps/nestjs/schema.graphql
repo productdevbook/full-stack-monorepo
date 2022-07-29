@@ -211,7 +211,7 @@ type PageMenuRole {
 }
 
 type Permission {
-  action: [ActionEnum!]
+  action: ActionEnum!
   archived: Boolean!
   createdAt: DateTime!
   deleted: Boolean!
@@ -220,7 +220,7 @@ type Permission {
   hidden: Boolean!
   id: ID!
   roles: [Role!]!
-  subject: [Subject!]
+  subject: Subject!
   updatedAt: DateTime
 }
 

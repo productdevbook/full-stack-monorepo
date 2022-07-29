@@ -20,30 +20,25 @@ export class RoleRepository {
     return newRole
   }
 
-  // doesnt work
   async addPermissionToRole(roleName: string, permissionId: string): Promise<Role> {
-    const role = await this.getRoleByName(roleName)
     const permission = await this.permissionRepo.getPermissionById(permissionId)
-
-    return await this.roleRepo.createQueryBuilder()
-      .update({ permissions: [...role.permissions, permission] })
-      .where({ name: roleName })
-      .execute()
+    const role = await this.roleRepo.findOneOrFail({ name: roleName }, { populate: ['permissions'] })
+    role.permissions.add(permission)
+    await this.roleRepo.flush()
+    return role
   }
 
+  // calismiyor entity ile ilgili bir sorun olabilir
   async removePermissionFromRole(roleName: string, permissionId: string): Promise<Role> {
     const permission = await this.permissionRepo.getPermissionById(permissionId)
-    const role = await this.getRoleByName(roleName)
-    const permissions = role.permissions.toArray()
-
-    return await this.roleRepo.createQueryBuilder()
-      .where({ name: roleName })
-      .update({ permissions: permissions.filter(data => data.action !== permission.action) })
-      .execute()
+    const role = await this.roleRepo.findOneOrFail({ name: roleName }, { populate: ['permissions'] })
+    role.permissions.remove(permission)
+    await this.roleRepo.flush()
+    return role
   }
 
   async getAllRoles(): Promise<Role[]> {
-    return await this.roleRepo.findAll()
+    return await this.roleRepo.findAll({ populate: ['permissions'] })
   }
 
   async getRoleByName(name: string): Promise<Role> {
