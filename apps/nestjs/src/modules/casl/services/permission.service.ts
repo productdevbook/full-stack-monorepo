@@ -8,8 +8,8 @@ import { Permission } from '@/entities'
 export class PermissionService {
   constructor(private readonly permissionRepository: PermissionRepository) {}
 
-  async createPermission(subject_id: string, createPermissionInput: CreatePermissionInput): Promise<Permission> {
-    return await this.permissionRepository.createPermission(subject_id, createPermissionInput)
+  async createPermission(data: CreatePermissionInput): Promise<Permission> {
+    return await this.permissionRepository.createPermission(data)
   }
 
   async getAllPermissions(): Promise<Permission[]> {

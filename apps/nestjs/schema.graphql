@@ -64,6 +64,7 @@ input CreateNotificationTokenInput {
 
 input CreatePermissionInput {
   action: ActionEnum!
+  subjectId: ID!
 }
 
 input CreateSubjectInput {
@@ -129,7 +130,7 @@ type Mutation {
   addPermissionToRole(permissionId: String!, rolename: String!): Role!
   addRoleToUser(rolename: String!, username: String!): Role!
   createAdminRole(data: CreateAdminRoleInput!): Role!
-  createPermission(data: CreatePermissionInput!, subject_id: String!): Permission!
+  createPermission(data: CreatePermissionInput!): Permission!
   createSubject(data: CreateSubjectInput!): Subject!
   deletePermission(id: String!): Permission!
   deleteRole(id: String!): Role!
@@ -377,6 +378,7 @@ type TokenResponse {
 
 input UpdatePermissionInput {
   action: ActionEnum
+  subjectId: ID
 }
 
 input UpdateRoleInput {

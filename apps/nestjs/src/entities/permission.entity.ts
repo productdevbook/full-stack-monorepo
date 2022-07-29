@@ -1,5 +1,5 @@
 import { Collection, Entity, Enum, ManyToMany, ManyToOne } from '@mikro-orm/core'
-import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
+import { Field, ObjectType } from '@nestjs/graphql'
 import { BaseModel } from './base.model'
 import { Role } from './role.entity'
 import { Subject } from './subject.entity'
@@ -23,7 +23,3 @@ export class Permission extends BaseModel {
   @Field(() => [ActionEnum], { nullable: true })
     action!: ActionEnum
 }
-
-registerEnumType(ActionEnum, {
-  name: 'ActionEnum',
-})

@@ -14,8 +14,8 @@ export class CalsPermissionResolver {
   }
 
   @Mutation(() => Permission)
-  async createPermission(@Args('subject_id') subject_id: string, @Args('data') data: CreatePermissionInput): Promise<Permission> {
-    return await this.permissionService.createPermission(subject_id, data)
+  async createPermission(@Args('data') data: CreatePermissionInput): Promise<Permission> {
+    return await this.permissionService.createPermission(data)
   }
 
   @Mutation(() => Permission)

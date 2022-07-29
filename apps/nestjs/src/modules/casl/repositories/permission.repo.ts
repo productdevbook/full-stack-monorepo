@@ -14,9 +14,8 @@ export class PermissionRepository {
     private readonly subjectRepo: SubjectRepository,
   ) { }
 
-  async createPermission(subject_id: string, createPermissionInput: CreatePermissionInput): Promise<Permission> {
-    const subject = await this.subjectRepo.getSubjectById(subject_id)
-    const newPermission = this.permissionRepo.create({ ...createPermissionInput, subject })
+  async createPermission(data: CreatePermissionInput): Promise<Permission> {
+    const newPermission = this.permissionRepo.create({ subject: data.subjectId, action: data.action })
     await this.permissionRepo.persistAndFlush(newPermission)
     return newPermission
   }
