@@ -27,7 +27,7 @@
     "db:update": "pnpm --filter app-nestjs migrate:update",
     "db:up": "pnpm --filter app-nestjs migrate:up",
     "db:down": "pnpm --filter app-nestjs migrate:down",
-    "db:seed": "pnpm --filternestjs mikro-orm seeder:run",
+    "db:seed": "pnpm --filter app-nestjs seeder:run",
     "db:fresh": "pnpm --filter app-nestjs migrate:fresh",
     "db:show": "pnpm --filter app-nestjs migrate:show",
     "generate": "pnpm --filter @oku/api build && pnpm --filter api app:create",

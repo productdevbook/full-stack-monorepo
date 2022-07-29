@@ -78,7 +78,7 @@ importers:
     specifiers:
       '@antfu/eslint-config': 0.25.2
       '@aws-sdk/client-s3': 3.135.0
-      '@casl/ability': 5.4.4
+      '@casl/ability': 6.0.0
       '@faker-js/faker': 7.3.0
       '@liaoliaots/nestjs-redis': 9.0.1
       '@mikro-orm/cli': 5.2.3
@@ -165,7 +165,7 @@ importers:
       uuid: 8.3.2
     dependencies:
       '@aws-sdk/client-s3': 3.135.0
-      '@casl/ability': 5.4.4
+      '@casl/ability': 6.0.0
       '@liaoliaots/nestjs-redis': 9.0.1_iow2ijmp5orxlvazc43y6knuoa
       '@mikro-orm/cli': 5.2.3_bf3c65yayqpn34wzdxq2ert724
       '@mikro-orm/core': 5.2.3_wayr4pnztlklgyjar3a4y7ahgu
@@ -3599,8 +3599,8 @@ packages:
       '@capacitor/core': 3.6.0
     dev: false
 
-  /@casl/ability/5.4.4:
-    resolution: {integrity: sha512-7+GOnMUq6q4fqtDDesymBXTS9LSDVezYhFiSJ8Rn3f0aQLeRm7qHn66KWbej4niCOvm0XzNj9jzpkK0yz6hUww==}
+  /@casl/ability/6.0.0:
+    resolution: {integrity: sha512-hrL9+SiWVzi1C7fA96eZjuJ9ZEkkHpsBZTmqJTxcUAGju9VdHRqHwZUBYR2EBGxCkWi7WIUZs5AH4kHyL9CcPA==}
     dependencies:
       '@ucast/mongo2js': 1.3.3
     dev: false

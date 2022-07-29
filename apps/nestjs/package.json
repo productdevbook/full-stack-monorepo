@@ -27,11 +27,12 @@
     "migrate:update": "npx mikro-orm schema:update --run",
     "migrate:up": "npx mikro-orm migration:up",
     "migrate:down": "npx mikro-orm migration:down",
-    "migrate:fresh": "npx mikro-orm schema:fresh --run"
+    "migrate:fresh": "npx mikro-orm schema:fresh --run",
+    "seeder:run": "mikro-orm seeder:run --class=DatabaseSeeder"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.135.0",
-    "@casl/ability": "5.4.4",
+    "@casl/ability": "6.0.0",
     "@liaoliaots/nestjs-redis": "9.0.1",
     "@mikro-orm/cli": "5.2.3",
     "@mikro-orm/core": "5.2.3",
