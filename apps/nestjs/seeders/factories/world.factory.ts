@@ -1,4 +1,4 @@
-import { EntityManager, Reference } from '@mikro-orm/core'
+import { EntityManager } from '@mikro-orm/core'
 import { parse } from 'csv-parse/sync'
 import { getSeedCsv } from '@/core/utils'
 import { Country } from '@/entities'
@@ -37,7 +37,7 @@ export interface Timezone {
 export interface IStates {
   id: string
   name: string
-  country_id: string
+  country_id: number
   country_code: string
   country_name: string
   state_code: string
@@ -74,11 +74,7 @@ export class WorldFactory {
         id: Number(element.id),
       }))
     })
-    await this.em.persistAndFlush(arrayData).catch((e) => {
-      // eslint-disable-next-line no-console
-      console.log(e)
-    })
-
+    this.em.persist(arrayData)
     const resultStates = getSeedCsv('states')
     const state = parse(resultStates, {
       trim: true,
@@ -98,19 +94,11 @@ export class WorldFactory {
         name: element.name,
         type: element.type,
       })
-
-      const data2 = new Country()
-      data2.id = Number(element.country_id)
-      dataState.country = Reference.create(data2)
-
+      const repo = this.em.getRepository(Country)
+      dataState.country = repo.getReference(element.country_id)
       states.push(dataState)
     })
-
-    await this.em.persistAndFlush(states)
-    // const knex = (
-    //   this.em.getConnection() as AbstractSqlConnection
-    // ).getKnex()
-    // // will get persisted automatically
-    // await knex.raw(result)
+    this.em.persist(states)
+    await this.em.flush()
   }
 }

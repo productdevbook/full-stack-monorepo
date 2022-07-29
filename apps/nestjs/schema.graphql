@@ -339,7 +339,7 @@ enum SiteThemeEnum {
 }
 
 type State {
-  country: [Country!]!
+  country: Country!
   countryCode: String!
   countryName: String!
   id: ID!

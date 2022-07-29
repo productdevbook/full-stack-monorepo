@@ -49,9 +49,9 @@ export class State {
   @Field(() => String, { nullable: false })
     longitude!: string
 
-  @ManyToOne({ entity: () => Country, nullable: false })
-  @Field(() => [Country])
-    country!: IdentifiedReference<Country>
+  @ManyToOne({ entity: () => Country })
+  @Field(() => Country)
+    country!: Country
 
   @OneToMany(() => UserSetting, userSetting => userSetting.state, {
     eager: true,
