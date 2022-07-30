@@ -8,7 +8,11 @@ import { Permission } from '@/entities'
 
 @Injectable()
 export class CaslAbilityFactory {
-  // permission is entity
+  /**
+ * It takes an array of permissions and returns an ability object
+ * @param {Permission[] | undefined} permissions - Permission[] | undefined
+ * @returns An ability object
+ */
   async createForUser(permissions: Permission[] | undefined): Promise<AppAbilityType> {
     if (!permissions)
       throw Error

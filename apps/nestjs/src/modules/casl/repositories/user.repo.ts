@@ -3,6 +3,7 @@ import {
 } from '@nestjs/common'
 import { InjectRepository } from '@mikro-orm/nestjs'
 import { EntityRepository } from '@mikro-orm/postgresql'
+import { AddRoleInput } from '../inputs/add-role.input'
 import { User } from '@/entities'
 import { RoleRepository } from '@/modules/casl/repositories'
 
@@ -15,21 +16,19 @@ export class CaslUserRepository {
   ) {
   }
 
-  async addRoleToUser(username: string, roleName: string): Promise<User> {
-    const role = await this.roleRepo.getRoleByName(roleName)
-    const user = await this.userRepo.findOneOrFail({ username })
+  async addRoleToUser(addRoleInput: AddRoleInput): Promise<User> {
+    const role = await this.roleRepo.getRoleById(addRoleInput.roleId)
+    const user = await this.userRepo.findOneOrFail({ id: addRoleInput.userId }, { populate: ['roles'] })
     user.roles.add(role)
-    await this.userRepo.flush()
-
+    await this.userRepo.persistAndFlush(role)
     return user
   }
 
-  async removeRoleFromUser(username: string, roleName: string): Promise<User> {
-    const role = await this.roleRepo.getRoleByName(roleName)
-    const user = await this.userRepo.findOneOrFail({ username })
+  async removeRoleFromUser(addRoleInput: AddRoleInput): Promise<User> {
+    const role = await this.roleRepo.getRoleById(addRoleInput.roleId)
+    const user = await this.userRepo.findOneOrFail({ id: addRoleInput.userId }, { populate: ['roles'] })
     user.roles.remove(role)
-    await this.userRepo.flush()
-
+    await this.userRepo.persistAndFlush(user)
     return user
   }
 }

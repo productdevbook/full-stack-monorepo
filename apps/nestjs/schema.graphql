@@ -10,6 +10,16 @@ enum ActionEnum {
   UPDATE
 }
 
+input AddPermissionInput {
+  permissionId: String!
+  roleId: String!
+}
+
+input AddRoleInput {
+  roleId: String!
+  userId: String!
+}
+
 type City {
   archived: Boolean!
   country: Country
@@ -127,8 +137,8 @@ type Menu {
 }
 
 type Mutation {
-  addPermissionToRole(permissionId: String!, rolename: String!): Role!
-  addRoleToUser(rolename: String!, username: String!): Role!
+  addPermissionToRole(addPermission: AddPermissionInput!): Role!
+  addRoleToUser(addRole: AddRoleInput!): Role!
   createAdminRole(data: CreateAdminRoleInput!): Role!
   createPermission(data: CreatePermissionInput!): Permission!
   createSubject(data: CreateSubjectInput!): Subject!
@@ -138,8 +148,8 @@ type Mutation {
   forgotPassword(data: ForgotPasswordInput!): Boolean!
   logout: Boolean!
   refreshToken(data: RefreshTokenInput!): TokenResponse!
-  removePermissionFromRole(permissionId: String!, rolename: String!): Role!
-  removeRoleFromUser(rolename: String!, username: String!): Role!
+  removePermissionFromRole(removePermission: AddPermissionInput!): Role!
+  removeRoleFromUser(addRole: AddRoleInput!): Role!
   resetPassword(data: ResetPasswordInput!): Boolean!
   saveNotificationToken(data: CreateNotificationTokenInput!): NotificationToken!
   sendNotificationToken(data: SendNotificationInput!): Boolean!

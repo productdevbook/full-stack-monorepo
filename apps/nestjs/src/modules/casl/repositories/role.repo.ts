@@ -3,6 +3,7 @@ import { InjectRepository } from '@mikro-orm/nestjs'
 import { EntityRepository } from '@mikro-orm/postgresql'
 import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
+import { AddPermissionInput } from '../inputs/add-permission.input'
 import { PermissionRepository } from './permission.repo'
 import { Role } from '@/entities'
 
@@ -20,20 +21,19 @@ export class RoleRepository {
     return newRole
   }
 
-  async addPermissionToRole(roleName: string, permissionId: string): Promise<Role> {
-    const permission = await this.permissionRepo.getPermissionById(permissionId)
-    const role = await this.roleRepo.findOneOrFail({ name: roleName }, { populate: ['permissions'] })
+  async addPermissionToRole(data: AddPermissionInput): Promise<Role> {
+    const permission = await this.permissionRepo.getPermissionById(data.permissionId)
+    const role = await this.roleRepo.findOneOrFail({ id: data.roleId }, { populate: ['permissions'] })
     role.permissions.add(permission)
-    await this.roleRepo.flush()
+    await this.roleRepo.persistAndFlush(role)
     return role
   }
 
-  // calismiyor entity ile ilgili bir sorun olabilir
-  async removePermissionFromRole(roleName: string, permissionId: string): Promise<Role> {
-    const permission = await this.permissionRepo.getPermissionById(permissionId)
-    const role = await this.roleRepo.findOneOrFail({ name: roleName }, { populate: ['permissions'] })
+  async removePermissionFromRole(data: AddPermissionInput): Promise<Role> {
+    const permission = await this.permissionRepo.getPermissionById(data.permissionId)
+    const role = await this.roleRepo.findOneOrFail({ id: data.roleId }, { populate: ['permissions'] })
     role.permissions.remove(permission)
-    await this.roleRepo.flush()
+    await this.roleRepo.persistAndFlush(role)
     return role
   }
 

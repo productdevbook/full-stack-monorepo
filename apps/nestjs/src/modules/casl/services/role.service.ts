@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common'
 import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
 import { CaslUserRepository, RoleRepository } from '../repositories'
+import { AddPermissionInput } from '../inputs/add-permission.input'
+import { AddRoleInput } from '../inputs/add-role.input'
 import { Role, User } from '@/entities'
 
 @Injectable()
@@ -13,20 +15,20 @@ export class RoleService {
     return await this.roleRepository.createAdminRole(createRoleInput)
   }
 
-  async addPermissionToRole(roleName: string, permissionId: string): Promise<Role> {
-    return await this.roleRepository.addPermissionToRole(roleName, permissionId)
+  async addPermissionToRole(data: AddPermissionInput): Promise<Role> {
+    return await this.roleRepository.addPermissionToRole(data)
   }
 
-  async removePermissionFromRole(roleName: string, permissionId: string): Promise<Role> {
-    return await this.roleRepository.removePermissionFromRole(roleName, permissionId)
+  async removePermissionFromRole(data: AddPermissionInput): Promise<Role> {
+    return await this.roleRepository.removePermissionFromRole(data)
   }
 
-  async addRoleToUser(roleName: string, userName: string): Promise<User> {
-    return await this.userRepo.addRoleToUser(roleName, userName)
+  async addRoleToUser(data: AddRoleInput): Promise<User> {
+    return await this.userRepo.addRoleToUser(data)
   }
 
-  async removeRoleFromUser(roleName: string, userName: string): Promise<User> {
-    return await this.userRepo.removeRoleFromUser(roleName, userName)
+  async removeRoleFromUser(data: AddRoleInput): Promise<User> {
+    return await this.userRepo.removeRoleFromUser(data)
   }
 
   async getAllRoles(): Promise<Role[]> {

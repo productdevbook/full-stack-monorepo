@@ -2,7 +2,9 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { RoleService } from '../services/role.service'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
+import { AddPermissionInput } from '../inputs/add-permission.input'
 import { Role, User } from '@/entities'
+import { AddRoleInput } from '../inputs/add-role.input'
 
 @Resolver()
 export class CalsRoleResolver {
@@ -14,23 +16,23 @@ export class CalsRoleResolver {
   }
 
   @Mutation(() => Role)
-  async addPermissionToRole(@Args('permissionId') perm: string, @Args('rolename') role: string): Promise<Role> {
-    return await this.roleService.addPermissionToRole(role, perm)
+  async addPermissionToRole(@Args('addPermission') data: AddPermissionInput): Promise<Role> {
+    return await this.roleService.addPermissionToRole(data)
   }
 
   @Mutation(() => Role)
-  async removePermissionFromRole(@Args('permissionId') perm: string, @Args('rolename') role: string): Promise<Role> {
-    return await this.roleService.removePermissionFromRole(role, perm)
+  async removePermissionFromRole(@Args('removePermission') data: AddPermissionInput): Promise<Role> {
+    return await this.roleService.removePermissionFromRole(data)
   }
 
   @Mutation(() => Role)
-  async addRoleToUser(@Args('rolename') role: string, @Args('username') user: string): Promise<User> {
-    return await this.roleService.addRoleToUser(role, user)
+  async addRoleToUser(@Args('addRole') data: AddRoleInput): Promise<User> {
+    return await this.roleService.addRoleToUser(data)
   }
 
   @Mutation(() => Role)
-  async removeRoleFromUser(@Args('rolename') role: string, @Args('username') user: string): Promise<User> {
-    return await this.roleService.removeRoleFromUser(role, user)
+  async removeRoleFromUser(@Args('addRole') data: AddRoleInput): Promise<User> {
+    return await this.roleService.removeRoleFromUser(data)
   }
 
   @Query(() => [Role])
