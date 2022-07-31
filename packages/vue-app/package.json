@@ -9,7 +9,7 @@
   "devDependencies": {
     "@vueuse/core": "8.9.4",
     "canvas-confetti": "1.5.1",
-    "naive-ui": "2.31.0",
+    "naive-ui": "2.32.1",
     "oku-i18n": "workspace:*",
     "@oku/tsconfig": "workspace:*",
     "vee-validate": "4.6.2",
