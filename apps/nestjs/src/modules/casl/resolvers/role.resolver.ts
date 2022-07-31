@@ -3,8 +3,8 @@ import { CreateAdminRoleInput } from '../inputs/role/create-role.input'
 import { RoleService } from '../services/role.service'
 import { UpdateRoleInput } from '../inputs/role/update-role.input'
 import { AddPermissionInput } from '../inputs/add-permission.input'
-import { Role, User } from '@/entities'
 import { AddRoleInput } from '../inputs/add-role.input'
+import { Role, User } from '@/entities'
 
 @Resolver()
 export class CalsRoleResolver {
