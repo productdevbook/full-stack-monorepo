@@ -35,6 +35,6 @@ export class SubjectRepository {
   }
 
   async updateSubject(id: string, updateSubjectInput: UpdateSubjectInput): Promise<Subject> {
-    return await this.subjectRepo.createQueryBuilder().where({ id }).update(updateSubjectInput).execute()
+    return await this.subjectRepo.createQueryBuilder().update(updateSubjectInput).where({ id }).execute()
   }
 }

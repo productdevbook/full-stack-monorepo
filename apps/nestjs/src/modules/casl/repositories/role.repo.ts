@@ -54,6 +54,6 @@ export class RoleRepository {
   }
 
   async updateRole(id: string, updateRoleInput: UpdateRoleInput): Promise<Role> {
-    return await this.roleRepo.createQueryBuilder().where({ id }).update(updateRoleInput).execute()
+    return await this.roleRepo.createQueryBuilder().update(updateRoleInput).where({ id }).execute()
   }
 }

@@ -90,7 +90,7 @@ export class User extends BaseModel {
   @OneToMany({ entity: () => NotificationToken, mappedBy: (token: NotificationToken) => token.createdBy, cascade: [Cascade.ALL], orphanRemoval: true })
     notificationToken = new Collection<NotificationToken>(this)
 
-  @ManyToMany(() => Role, role => role.users)
+  @ManyToMany(() => Role, 'users', { owner: true })
   @Field(() => [Role], { nullable: true })
     roles = new Collection<Role>(this)
 

@@ -26,7 +26,7 @@ export class Role extends BaseModel {
   @Field(() => [PageMenuRole], { nullable: true })
     pageMenus = new Collection<PageMenuRole>(this)
 
-  @ManyToMany(() => User, 'roles', { owner: true })
+  @ManyToMany(() => User, user => user.roles)
   @Field(() => [User], { nullable: true })
     users = new Collection<User>(this)
 

@@ -34,6 +34,6 @@ export class PermissionRepository {
   }
 
   async updatePermission(id: string, updatePermissionInput: UpdatePermissionInput): Promise<Permission> {
-    return await this.permissionRepo.createQueryBuilder().where({ id }).update(updatePermissionInput).execute()
+    return await this.permissionRepo.createQueryBuilder().update(updatePermissionInput).where({ id }).execute()
   }
 }
