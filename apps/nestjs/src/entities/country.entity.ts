@@ -2,7 +2,6 @@ import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { Collection, Entity, OneToMany, PrimaryKey, Property, Unique } from '@mikro-orm/core'
 import { City } from './city.entity'
 import { UserSetting } from './user-setting.entity'
-import { State } from './state.entity'
 
 export interface Timezone {
   zoneName: string
@@ -32,9 +31,9 @@ export class Country {
   @Field(() => String, { nullable: false })
     iso2: string | null = null
 
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    numericCode: string | null = null
+  @Property({ type: 'int4', length: 200, nullable: false })
+  @Field(() => Number, { nullable: false })
+    numericCode: number | null = null
 
   @Property({ type: 'varchar', length: 200, nullable: false })
   @Field(() => String, { nullable: false })
@@ -76,13 +75,13 @@ export class Country {
   @Field(() => String, { nullable: false })
     timeZones: Timezone | null = null
 
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    latitude: string | null = null
+  @Property({ type: 'float8', length: 200, nullable: false })
+  @Field(() => Number, { nullable: false })
+    latitude: number | null = null
 
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    longitude: string | null = null
+  @Property({ type: 'float8', length: 200, nullable: false })
+  @Field(() => Number, { nullable: false })
+    longitude: number | null = null
 
   @Property({ type: 'varchar', length: 200, nullable: false })
   @Field(() => String, { nullable: false })
@@ -95,10 +94,6 @@ export class Country {
   @OneToMany(() => City, city => city.country, { eager: true })
   @Field(() => [City])
     cities = new Collection<City>(this)
-
-  @OneToMany(() => State, state => state.country)
-  @Field(() => [State])
-    states = new Collection<State>(this)
 
   @OneToMany(() => UserSetting, userSetting => userSetting.country, {
     eager: true,

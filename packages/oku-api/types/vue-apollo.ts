@@ -27,6 +27,23 @@ export type Scalars = {
   JWT: any;
 };
 
+export type ActionEnum =
+  | 'CREATE'
+  | 'DELETE'
+  | 'MANAGE'
+  | 'READ'
+  | 'UPDATE';
+
+export type AddPermissionInput = {
+  permissionId: Scalars['String'];
+  roleId: Scalars['String'];
+};
+
+export type AddRoleInput = {
+  roleId: Scalars['String'];
+  userId: Scalars['String'];
+};
+
 export type City = {
   __typename?: 'City';
   archived: Scalars['Boolean'];
@@ -68,11 +85,25 @@ export type Country = {
   userSettings: Array<UserSetting>;
 };
 
+export type CreateAdminRoleInput = {
+  description: Scalars['String'];
+  name: Scalars['String'];
+};
+
 export type CreateNotificationTokenInput = {
   /** Example field (placeholder) */
   deviceId: Scalars['String'];
   /** Example field (placeholder) */
   token: Scalars['String'];
+};
+
+export type CreatePermissionInput = {
+  action: ActionEnum;
+  subjectId: Scalars['ID'];
+};
+
+export type CreateSubjectInput = {
+  name: Scalars['String'];
 };
 
 export type Currency = {
@@ -119,15 +150,68 @@ export type Menu = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addPermissionToRole: Role;
+  addRoleToUser: Role;
+  createAdminRole: Role;
+  createPermission: Permission;
+  createSubject: Subject;
+  deletePermission: Permission;
+  deleteRole: Role;
+  deleteSubject: Subject;
   forgotPassword: Scalars['Boolean'];
   logout: Scalars['Boolean'];
   refreshToken: TokenResponse;
+  removePermissionFromRole: Role;
+  removeRoleFromUser: Role;
   resetPassword: Scalars['Boolean'];
   saveNotificationToken: NotificationToken;
   sendNotificationToken: Scalars['Boolean'];
   signIn: TokenResponse;
   signUp: User;
   terminateSession: Scalars['Boolean'];
+  updatePermission: Permission;
+  updateRole: Role;
+  updateSubject: Subject;
+};
+
+
+export type MutationAddPermissionToRoleArgs = {
+  addPermission: AddPermissionInput;
+};
+
+
+export type MutationAddRoleToUserArgs = {
+  addRole: AddRoleInput;
+};
+
+
+export type MutationCreateAdminRoleArgs = {
+  data: CreateAdminRoleInput;
+};
+
+
+export type MutationCreatePermissionArgs = {
+  data: CreatePermissionInput;
+};
+
+
+export type MutationCreateSubjectArgs = {
+  data: CreateSubjectInput;
+};
+
+
+export type MutationDeletePermissionArgs = {
+  id: Scalars['String'];
+};
+
+
+export type MutationDeleteRoleArgs = {
+  id: Scalars['String'];
+};
+
+
+export type MutationDeleteSubjectArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -138,6 +222,16 @@ export type MutationForgotPasswordArgs = {
 
 export type MutationRefreshTokenArgs = {
   data: RefreshTokenInput;
+};
+
+
+export type MutationRemovePermissionFromRoleArgs = {
+  removePermission: AddPermissionInput;
+};
+
+
+export type MutationRemoveRoleFromUserArgs = {
+  addRole: AddRoleInput;
 };
 
 
@@ -168,6 +262,24 @@ export type MutationSignUpArgs = {
 
 export type MutationTerminateSessionArgs = {
   data: TerminateSessionInput;
+};
+
+
+export type MutationUpdatePermissionArgs = {
+  data: UpdatePermissionInput;
+  id: Scalars['String'];
+};
+
+
+export type MutationUpdateRoleArgs = {
+  data: UpdateRoleInput;
+  id: Scalars['String'];
+};
+
+
+export type MutationUpdateSubjectArgs = {
+  data: UpdateSubjectInput;
+  id: Scalars['String'];
 };
 
 export type NotificationToken = {
@@ -233,16 +345,46 @@ export type PageMenuRole = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export type Permission = {
+  __typename?: 'Permission';
+  action: ActionEnum;
+  archived: Scalars['Boolean'];
+  createdAt: Scalars['DateTime'];
+  deleted: Scalars['Boolean'];
+  deletedAt?: Maybe<Scalars['DateTime']>;
+  disabled: Scalars['Boolean'];
+  hidden: Scalars['Boolean'];
+  id: Scalars['ID'];
+  roles: Array<Role>;
+  subject: Subject;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   example: Scalars['String'];
   me: User;
+  permissions: Array<Permission>;
+  role: Role;
+  roles: Array<Role>;
   sessions: Array<Session>;
+  subject: Subject;
+  subjects: Array<Subject>;
 };
 
 
 export type QueryExampleArgs = {
   data: ExampleInput;
+};
+
+
+export type QueryRoleArgs = {
+  name: Scalars['String'];
+};
+
+
+export type QuerySubjectArgs = {
+  name: Scalars['String'];
 };
 
 export type RefreshTokenInput = {
@@ -267,6 +409,7 @@ export type Role = {
   id: Scalars['ID'];
   name: Scalars['String'];
   pageMenus?: Maybe<Array<PageMenuRole>>;
+  permissions?: Maybe<Array<Permission>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   users?: Maybe<Array<User>>;
 };
@@ -348,7 +491,7 @@ export type SiteThemeEnum =
 
 export type State = {
   __typename?: 'State';
-  country: Array<Country>;
+  country: Country;
   countryCode: Scalars['String'];
   countryName: Scalars['String'];
   id: Scalars['ID'];
@@ -383,6 +526,20 @@ export type TokenResponse = {
   accessToken: Scalars['JWT'];
   /** JWT refresh token */
   refreshToken: Scalars['JWT'];
+};
+
+export type UpdatePermissionInput = {
+  action?: InputMaybe<ActionEnum>;
+  subjectId?: InputMaybe<Scalars['ID']>;
+};
+
+export type UpdateRoleInput = {
+  description?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateSubjectInput = {
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type User = {
@@ -570,7 +727,7 @@ export type CreateTokenNotificationMutation = { __typename?: 'Mutation', saveNot
 export type GetUserInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserInfoQuery = { __typename?: 'Query', me: { __typename?: 'User', id: string, email: string } };
+export type GetUserInfoQuery = { __typename?: 'Query', me: { __typename?: 'User', id: string, email: string, username: string } };
 
 
 export const ForgotPasswordDocument = gql`
@@ -745,6 +902,7 @@ export const GetUserInfoDocument = gql`
   me {
     id
     email
+    username
   }
 }
     `;

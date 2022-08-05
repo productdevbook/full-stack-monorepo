@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --port 3000",
     "android:dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "lint": "eslint \"./**/*.{ts,vue}\"",

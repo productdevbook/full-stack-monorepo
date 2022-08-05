@@ -1,0 +1,8 @@
+{
+  "extends": ["@antfu"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "off",
+    "vue/no-deprecated-slot-attribute": "off",
+    "vue/valid-template-root": "off"
+  }
+}

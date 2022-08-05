@@ -13,7 +13,7 @@ export class UserResolver {
 
   @Query(() => User, { name: 'me', nullable: false })
   me(@UserDecorator() user: JwtArgs) {
-    return this.userService.me(user.id)
+    return this.userService.me(user.username)
   }
 
   @Mutation(() => NotificationToken)

@@ -1,0 +1,109 @@
+{
+  "account": {
+    "backButton": "Back",
+    "changePassword": "Change password",
+    "merhaba": "Merhaba",
+    "discord": "Discord",
+    "heading": "Account",
+    "keys": "API keys",
+    "legal": "Terms of services",
+    "logout": "Logout",
+    "personalInformation": "Personal information",
+    "preferences": "Notifications",
+    "privacy": "Privacy policy",
+    "support": "Support",
+    "usage": "usage"
+  },
+  "accountPassword": {
+    "confirmPassword": "Confirm password",
+    "errorMsg": "Error happened, please try again",
+    "heading": "Change my password",
+    "password": "New password",
+    "success": "Changed password successfully",
+    "validate": "Validate",
+    "password_matches": "Passwords must match"
+  },
+  "accountProfile": {
+    "country": "Country",
+    "email": "Email",
+    "first-name": "First name",
+    "heading": "Personal information",
+    "last-name": "Last name",
+    "update": "Update"
+  },
+  "forgot": {
+    "check_email": "Check your email to get the link to reset your password",
+    "email": "Email",
+    "heading": "Forgot password",
+    "sub_heading": "Enter your email address and we'll send you a link to reset your password.",
+    "success": "Password updated success"
+  },
+  "login": {
+    "andpass": "And password",
+    "connexion": "Login",
+    "create-new": "Create new account",
+    "email": "Email",
+    "forgot": "forgot",
+    "hello": "Hello",
+    "login-in": "Sign in",
+    "or": "or",
+    "password": "Password",
+    "withemail": "With email adress",
+    "signup": "Sign up",
+    "remember": "Remember me"
+  },
+  "signup": {
+    "email": "Email",
+    "heading": "Sign up",
+    "subHeading": "Create your account",
+    "password": "Password",
+    "error_confirm_password": "Passwords must match",
+    "confirm_password": "Confirm password",
+    "name": "Name",
+    "display-name": "Display name",
+    "username": "Username",
+    "password_confirmation": "Confirm password",
+    "submit": "Sign up",
+    "terms": "I agree to the terms of services",
+    "have_account_login": "Already have an account? Login",
+    "error_terms": "You must agree to the terms of services",
+    "success": "Success"
+  },
+  "password": {
+    "heading": "Create Password",
+    "new": "New Password",
+    "validate": "Validate"
+  },
+  "resetPassword": {
+    "heading": "Reset Password",
+    "input": "Enter your code",
+    "button": "Send password reset email",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "change_password": "Change Password",
+    "password_match_regexp": "Password must be at least 8 characters long and contain at least one number, one uppercase and one lowercase letter"
+  },
+  "activation": {
+    "desc": "Fill the following fields to complete your registration",
+    "doi": "Optional consent",
+    "doi-desc": "I accept Email newsletter and future marketing offers",
+    "heading": "activation",
+    "headline": "My settings",
+    "legal": "Terms of services",
+    "legal-desc": "I accept Capgo app privacy policy and terms of use",
+    "notification": "Notifications",
+    "notification-desc": "I accept to receive notification when new app version are available",
+    "validate": "Validate"
+  },
+  "language": {
+    "change": "Change language"
+  },
+  "global": {
+    "error": "Error",
+    "save": "Save",
+    "success": "Success",
+    "warning": "Warning",
+    "cancel": "Cancel",
+    "version": "Version"
+  }
+}

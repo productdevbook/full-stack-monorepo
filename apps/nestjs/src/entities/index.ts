@@ -1,5 +1,6 @@
 export { BaseModel } from './base.model'
 export { City } from './city.entity'
+export { State } from './state.entity'
 export { Country } from './country.entity'
 export { Currency } from './currency.entity'
 export { Menu } from './menu.entity'

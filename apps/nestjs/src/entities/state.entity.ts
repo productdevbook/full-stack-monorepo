@@ -1,10 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Collection, Entity, IdentifiedReference, ManyToOne, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
-// import { BaseModel } from './base.model'
-// import { City } from './city.entity'
+import { Collection, Entity, ManyToOne, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
 import { UserSetting } from './user-setting.entity'
-// import { Currency } from './currency.entity'
-import { Country } from './country.entity'
+import { City } from './city.entity'
 
 export interface Timezone {
   zoneName: string
@@ -25,33 +22,25 @@ export class State {
   @Field(() => String, { nullable: false })
     name!: string
 
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    countryCode!: string
-
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    countryName!: string
-
-  @Property({ type: 'varchar', length: 200, nullable: false })
+  @Property({ type: 'varchar', length: 10, nullable: false })
   @Field(() => String, { nullable: false })
     stateCode!: string
 
-  @Property({ type: 'varchar', length: 200, nullable: true })
-  @Field(() => String, { nullable: true })
-    type!: string
+  @Property({ type: 'float8', length: 200, nullable: false })
+  @Field(() => Number, { nullable: false })
+    latitude!: number
+
+  @Property({ type: 'float8', length: 200, nullable: false })
+  @Field(() => Number, { nullable: false })
+    longitude!: number
 
   @Property({ type: 'varchar', length: 200, nullable: false })
   @Field(() => String, { nullable: false })
-    latitude!: string
+    wikiDataId!: string
 
-  @Property({ type: 'varchar', length: 200, nullable: false })
-  @Field(() => String, { nullable: false })
-    longitude!: string
-
-  @ManyToOne({ entity: () => Country })
-  @Field(() => Country)
-    country!: Country
+  @ManyToOne({ entity: () => City })
+  @Field(() => City)
+    city!: City
 
   @OneToMany(() => UserSetting, userSetting => userSetting.state, {
     eager: true,

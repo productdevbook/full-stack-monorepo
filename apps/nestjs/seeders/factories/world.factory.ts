@@ -1,49 +1,62 @@
 import { EntityManager } from '@mikro-orm/core'
 import { parse } from 'csv-parse/sync'
 import { getSeedCsv } from '@/core/utils'
-import { Country } from '@/entities'
-import { State } from '@/entities/state.entity'
+import { City, Country, State } from '@/entities'
 
 export interface country {
-  id: string
-  name: string
-  iso3: string
-  iso2: string
-  numeric_code: string
-  phone_code: string
-  capital: string
-  currency: string
-  currency_name: string
-  currency_symbol: string
-  tld: string
-  native: string
-  region: string
-  subregion: string
-  timezones: Timezone
-  latitude: string
-  longitude: string
-  emoji: string
-  emojiU: string
+  id: any
+  name: any
+  iso3: any
+  iso2: any
+  numeric_code: any
+  phone_code: any
+  capital: any
+  currency: any
+  currency_name: any
+  currency_symbol: any
+  tld: any
+  native: any
+  region: any
+  subregion: any
+  timezones: any
+  latitude: any
+  longitude: any
+  emoji: any
+  emojiU: any
 }
 
 export interface Timezone {
-  zoneName: string
-  gmtOffset: number
-  gmtOffsetName: string
-  abbreviation: string
-  tzName: string
+  zoneName: any
+  gmtOffset: any
+  gmtOffsetName: any
+  abbreviation: any
+  tzName: any
+}
+
+export interface ICity {
+  id: any
+  name: any
+  country_id: any
+  country_code: any
+  country_name: any
+  state_code: any
+  type: any
+  latitude: any
+  longitude: any
 }
 
 export interface IStates {
-  id: string
-  name: string
-  country_id: number
-  country_code: string
-  country_name: string
-  state_code: string
-  type: string
-  latitude: string
-  longitude: string
+  id: any
+  name: any
+  state_id: any
+  state_code: any
+  state_name: any
+  country_id: any
+  country_code: any
+  country_name: any
+  latitude: any
+  longitude: any
+  wikiDataId: any
 }
 
 export class WorldFactory {
@@ -53,6 +66,7 @@ export class WorldFactory {
   }
 
   async run(): Promise<void> {
+    // Country
     const result = getSeedCsv('countries')
     const rawInvoices = parse(result, {
       trim: true,
@@ -75,6 +89,35 @@ export class WorldFactory {
       }))
     })
     this.em.persist(arrayData)
+
+    // cities
+    const resultCity = getSeedCsv('cities')
+    const rawCity = parse(resultCity, {
+      trim: true,
+      columns: true,
+      delimiter: ',',
+      skip_empty_lines: true,
+    }) as ICity[]
+
+    const city: City[] = []
+
+    rawCity.forEach((element: ICity) => {
+      const dataCity = new City({
+        id: element.id,
+        name: element.name,
+        latitude: element.latitude,
+        longitude: element.longitude,
+        type: element.type,
+      })
+
+      const repo = this.em.getRepository(Country)
+      dataCity.country = repo.getReference(element.country_id)
+
+      city.push(dataCity)
+    })
+    this.em.persist(city)
+
+    // states
     const resultStates = getSeedCsv('states')
     const state = parse(resultStates, {
       trim: true,
@@ -85,20 +128,19 @@ export class WorldFactory {
     const states: State[] = []
     state.forEach((element: IStates) => {
       const dataState = new State({
-        countryCode: element.country_code,
-        countryName: element.country_name,
         stateCode: element.state_code,
         id: Number(element.id),
         latitude: element.latitude,
         longitude: element.longitude,
         name: element.name,
-        type: element.type,
+        wikiDataId: element.wikiDataId,
       })
-      const repo = this.em.getRepository(Country)
-      dataState.country = repo.getReference(element.country_id)
+      const repo = this.em.getRepository(City)
+      dataState.city = repo.getReference(element.country_id)
       states.push(dataState)
     })
     this.em.persist(states)
+
     await this.em.flush()
   }
 }
