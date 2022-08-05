@@ -9,8 +9,25 @@ use_frameworks!
 install! 'cocoapods', :disable_input_output_paths => true
 
 def capacitor_pods
-  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/ios'
+  pod 'CapacitorCommunityAdmob', :path => '../../../../node_modules/.pnpm/@capacitor-community+admob@4.0.0-1/node_modules/@capacitor-community/admob'
+  pod 'CapacitorCommunityHttp', :path => '../../../../node_modules/.pnpm/@capacitor-community+http@1.4.1/node_modules/@capacitor-community/http'
+  pod 'CapacitorActionSheet', :path => '../../../../node_modules/.pnpm/@capacitor+action-sheet@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/action-sheet'
+  pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/app'
+  pod 'CapacitorBrowser', :path => '../../../../node_modules/.pnpm/@capacitor+browser@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/browser'
+  pod 'CapacitorClipboard', :path => '../../../../node_modules/.pnpm/@capacitor+clipboard@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/clipboard'
+  pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/device'
+  pod 'CapacitorDialog', :path => '../../../../node_modules/.pnpm/@capacitor+dialog@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/dialog'
+  pod 'CapacitorHaptics', :path => '../../../../node_modules/.pnpm/@capacitor+haptics@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/haptics'
+  pod 'CapacitorKeyboard', :path => '../../../../node_modules/.pnpm/@capacitor+keyboard@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/keyboard'
+  pod 'CapacitorLocalNotifications', :path => '../../../../node_modules/.pnpm/@capacitor+local-notifications@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/local-notifications'
+  pod 'CapacitorPushNotifications', :path => '../../../../node_modules/.pnpm/@capacitor+push-notifications@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/push-notifications'
+  pod 'CapacitorSplashScreen', :path => '../../../../node_modules/.pnpm/@capacitor+splash-screen@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/splash-screen'
+  pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/status-bar'
+  pod 'CapacitorPreferences', :path => '../../../../node_modules/.pnpm/@capacitor+preferences@4.0.1_@capacitor+core@4.0.1/node_modules/@capacitor/preferences'
+  pod 'CapawesomeCapacitorBadge', :path => '../../../../node_modules/.pnpm/@capawesome+capacitor-badge@2.0.0_@capacitor+core@4.0.1/node_modules/@capawesome/capacitor-badge'
+  pod 'CapgoCapacitorPurchases', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-purchases@1.3.12_@capacitor+core@4.0.1/node_modules/@capgo/capacitor-purchases'
 end
 
 target 'App' do

@@ -288,7 +288,7 @@ importers:
       '@oku/api': workspace:*
       '@oku/config': workspace:*
       '@oku/tsconfig': workspace:*
-      '@productdevbook/auth': 0.1.2
+      '@productdevbook/auth': 0.2.1
       '@types/apollo-upload-client': 17.0.1
       '@types/canvas-confetti': 1.4.3
       '@types/crypto-js': 4.1.1
@@ -360,7 +360,7 @@ importers:
       '@ionic/vue': 6.1.15
       '@ionic/vue-router': 6.1.15
       '@oku/api': link:../../packages/oku-api
-      '@productdevbook/auth': 0.1.2
+      '@productdevbook/auth': 0.2.1_cp2nz3xgmjo6a4xgx6xpy4w6oa
       '@vee-validate/i18n': 4.6.2
       '@vue/apollo-composable': 4.0.0-alpha.19_evl73agsd2l2vqwzmhm3tuflgi
       '@vueuse/core': 8.9.4_vue@3.2.37
@@ -6331,6 +6331,17 @@ packages:
     peerDependencies:
       '@capacitor/storage': ^1.2.5
     dependencies:
+      crypto-js: 4.1.1
+      jose: 4.8.3
+      js-cookie: 3.0.1
+    dev: false
+
+  /@productdevbook/auth/0.2.1_cp2nz3xgmjo6a4xgx6xpy4w6oa:
+    resolution: {integrity: sha512-gI91xQuheV528+bo/CqSblbEq22tRhzhzAgTrKBVB0B0xUBzEr+93BMurbPjdetWXx1bMglHuoLUpYvcK3qFZg==}
+    peerDependencies:
+      '@capacitor/preferences': ^4.0.1
+    dependencies:
+      '@capacitor/preferences': 4.0.1_@capacitor+core@4.0.1
       crypto-js: 4.1.1
       jose: 4.8.3
       js-cookie: 3.0.1
