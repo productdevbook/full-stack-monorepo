@@ -4,4 +4,5 @@
     <string name="title_activity_main">Product Dev Book</string>
     <string name="package_name">com.productdevbook.test</string>
     <string name="custom_url_scheme">com.productdevbook.test</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 </resources>

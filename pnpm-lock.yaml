@@ -426,7 +426,7 @@ importers:
       '@oku/config': workspace:*
       '@oku/tsconfig': workspace:*
       '@popperjs/core': 2.11.5
-      '@productdevbook/auth': 0.1.2
+      '@productdevbook/auth': 0.2.1
       '@tailwindcss/forms': 0.5.2
       '@tailwindcss/typography': 0.5.4
       '@types/apollo-upload-client': 17.0.1
@@ -477,7 +477,7 @@ importers:
       '@intlify/vite-plugin-vue-i18n': 5.0.1_e4cmfr2yyq6ehuyzd34qpsi4km
       '@oku/api': link:../../packages/oku-api
       '@popperjs/core': 2.11.5
-      '@productdevbook/auth': 0.1.2
+      '@productdevbook/auth': 0.2.1
       '@vee-validate/i18n': 4.6.2
       '@vue/apollo-composable': 4.0.0-alpha.19_ga3iooe4t6afr6kongbdyporqi
       '@vueuse/core': 8.9.4_vue@3.2.37
@@ -6326,10 +6326,10 @@ packages:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
     dev: false
 
-  /@productdevbook/auth/0.1.2:
-    resolution: {integrity: sha512-q2PxBhpyUI0qslaNpK2ls/iS5hPO5jLFR2IJBB5uWyHOazWUbRoPtGqarVK+nGXBJ5PKhKmJhAjXkIZjiSgzWg==}
+  /@productdevbook/auth/0.2.1:
+    resolution: {integrity: sha512-gI91xQuheV528+bo/CqSblbEq22tRhzhzAgTrKBVB0B0xUBzEr+93BMurbPjdetWXx1bMglHuoLUpYvcK3qFZg==}
     peerDependencies:
-      '@capacitor/storage': ^1.2.5
+      '@capacitor/preferences': ^4.0.1
     dependencies:
       crypto-js: 4.1.1
       jose: 4.8.3
