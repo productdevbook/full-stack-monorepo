@@ -9,15 +9,22 @@
 * http://localhost:5000 - vue-mobile
 * http://localhost:4000/graphql - api
 
-### Setup
+# Setup
 
 ```properties
 pnpm install
 docker-compose up
 ```
 
-Docker running
+### Env setup
+Example env file change name to .env
+```
+/apps/nestjs/.env.example -> /apps/nestjs/.env
+/apps/vue-web/.env.example -> /apps/vue-web/.env
+```
+
+### Docker running
 ```properties
-pnpm db:up
+pnpm db:up // migrations db
 pnpm dev
 ```
