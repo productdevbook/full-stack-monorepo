@@ -61,10 +61,6 @@
     "vue-mobile": "workspace:*",
     "vue-web": "workspace:*"
   },
-  "engines": {
-    "npm": "8.x",
-    "node": "16.x"
-  },
   "packageManager": "pnpm@7.6.0",
   "dependencies": {
     "add": "2.0.6",
