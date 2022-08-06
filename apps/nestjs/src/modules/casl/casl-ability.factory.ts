@@ -4,7 +4,6 @@ import { AppAbilityType } from '@/modules/casl/interfaces/app-ability.type'
 import { PermissionInterface } from '@/modules/casl/interfaces/permission.interface'
 import { ActionEnum } from '@/modules/casl/interfaces/action.enum'
 import { PermissionObjectType } from '@/modules/casl/interfaces/permission-object.type'
-import { Permission } from '@/entities'
 
 @Injectable()
 export class CaslAbilityFactory {
