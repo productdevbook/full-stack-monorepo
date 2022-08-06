@@ -1,5 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
+import { GqlExecutionContext } from '@nestjs/graphql'
 import { AppAbilityType } from '@/modules/casl/interfaces/app-ability.type'
 import { PERMISSION_CHECKER_KEY, RequiredPermission } from '@/modules/casl/decorators/check-permissions.decorator'
 import { CaslAbilityFactory } from '@/modules/casl/casl-ability.factory'
@@ -25,10 +26,10 @@ export class PermissionsGuard implements CanActivate {
         context.getHandler(),
       ) || []
 
-    const { user } = context.switchToHttp().getRequest().req
+    const user = GqlExecutionContext.create(context).getContext().req.user
 
     const ability = await this.abilityFactory.createForUser(
-      user.permissions,
+      user.roles,
     )
 
     return requiredPermissions.every(permission =>

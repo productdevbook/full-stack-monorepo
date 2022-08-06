@@ -15,8 +15,8 @@ export class UserRepository {
   ) {
   }
 
-  public async findOne(username: string) {
-    const user = await this.userRepo.findOneOrFail({ username })
+  public async findOne(id: string) {
+    const user = await this.userRepo.findOneOrFail({ id })
     return user
   }
 }

@@ -15,7 +15,7 @@ export class CaslAbilityFactory {
  */
   async createForUser(permissions: Permission[] | undefined): Promise<AppAbilityType> {
     if (!permissions)
-      throw Error
+      throw new Error(permissions)
 
     const caslPermissions: PermissionInterface[] = permissions.map(p => ({
       action: p.action,

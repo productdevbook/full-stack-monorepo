@@ -238,6 +238,7 @@ type Query {
   example(data: ExampleInput!): String!
   me: User!
   permissions: [Permission!]!
+  permiswork: String!
   role(name: String!): Role!
   roles: [Role!]!
   sessions: [Session!]!
