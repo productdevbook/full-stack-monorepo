@@ -8,7 +8,7 @@ import {
 import { useRoute } from 'vue-router'
 import { onMounted } from 'vue'
 const emit = defineEmits(['scroll'])
-const user = useUserStore()
+const { gUser } = useUserStore()
 const route = useRoute()
 async function signOut() {
 
@@ -30,89 +30,74 @@ onMounted(() => {
 </script>
 
 <template>
-  <Popover class="">
-    <div id="sidepanel" class="sm:fixed h-full bg-gradient-to-b from-backdrop to-surface dark:from-slate-800 dark:to-slate-900 flex-none sm:w-64 flex flex-col justify-between text-primary dark:text-primary-dark">
-      <div class="space-y-8">
-        <div class="px-4 sm:px-0 flex justify-between items-center sm:block w-full">
-          <!-- App Name -->
-          <div class="sm:px-7 py-6">
-            <AppLogo class="w-max" />
-          </div>
-          <div class="sm:hidden flex items-center gap-4">
-            <DarkMode />
-            <PopoverButton class="rounded-md p-0 inline-flex items-center justify-center text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:ring-0">
-              <span class="sr-only">Open menu</span>
-              <MenuIcon class="h-6 w-6" aria-hidden="true" />
-            </PopoverButton>
-          </div>
-          <div class="hidden sm:block">
-            <!-- Pages -->
-            <div class="space-y-1 px-3">
-              asdasd
-              <!-- <template v-for="page in store.dashboard.pages" :key="page.name">
-                <router-link
-                  :to="`/${page.page_id}`" class="block w-full truncate font-medium text-left px-4 py-2 hover:bg-surface dark:hover:bg-surface-dark"
-                  :class="[route.params.pageId === page.page_id ? 'bg-surface dark:bg-surface-dark font-semibold shadow rounded' : '']"
-                >
-                  {{ page.name }}
-                </router-link>
-              </template> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden sm:flex p-4 justify-between items-center">
-        <div class="flex items-center gap-2 group">
-          <div class="flex-shrink-0 h-12 w-12">
-            <Avatar />
-          </div>
-          <div class="font-medium text-sm opacity-0 group-hover:opacity-100 transition cursor-pointer" @click="signOut">
-            Log out
-          </div>
-        </div>
-        <DarkMode />
-      </div>
+  <!-- Static sidebar for desktop -->
+  <div class="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 lg:pt-5 lg:pb-4 lg:bg-gray-100">
+    <div class="flex items-center flex-shrink-0 px-6">
+      <Logo class="h-16 w-auto mx-auto mb-10" />
     </div>
-    <transition enter-active-class="duration-200 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="duration-100 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-      <PopoverPanel v-slot="{ close }" focus class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50">
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-y-2 bg-white divide-neutral-50 dark:bg-neutral-800 dark:divide-neutral-700">
-          <div class="pt-4 pb-6 px-5">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <AppLogo />
-              </div>
-              <div class="-mr-2">
-                <PopoverButton class="rounded-md p-2 inline-flex items-center justify-center focus:outline-none focus:ring-0 text-neutral-400 dark:text-neutral-500">
-                  <span class="sr-only">Close menu</span>
-                  <XIcon class="h-6 w-6" aria-hidden="true" />
-                </PopoverButton>
-              </div>
-            </div>
-          </div>
-          <div class="sm:hidden">
-            <!-- Profile -->
-            <a class="py-6 flex items-center space-x-3 px-4 sm:px-6 select-none w-full" :title="store.user?.email || ''">
-              <div class="flex-shrink-0 h-12 w-12">
-                <Avatar />
-              </div>
-              <div class="space-y-1 shrink font-medium truncate text-neutral-800 dark:text-neutral-200">
-                {{ user.user.email || '' }}
-              </div>
-            </a>
-            <!-- Pages -->
-            <div class="flex flex-col divide-y border-t text-neutral-800 border-neutral-200 divide-neutral-200 dark:text-neutral-300 dark:border-neutral-700 dark:divide-neutral-700">
-              <!-- <template v-for="page in store.dashboard.pages" :key="page.name">
-                <template class="block hover:bg-neutral-100 font-medium">
-                  <button class="px-4 sm:px-6 py-4 block w-full truncate font-medium text-left" @click="openLink(page.page_id, close)">
-                    {{ page.name }}
-                  </button>
-                </template>
-              </template> -->
-              <a class="cursor-pointer hover:bg-neutral-100 font-medium px-4 sm:px-6 py-4 block w-full truncate" @click="signOut">Log out</a>
-            </div>
-          </div>
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="mt-6 h-0 flex-1 flex flex-col overflow-y-auto">
+      <!-- User account dropdown -->
+      <Menu as="div" class="px-3 relative inline-block text-left">
+        <div>
+          <MenuButton class="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm text-left font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500">
+            <span class="flex w-full justify-between items-center">
+              <span class="flex min-w-0 items-center justify-between space-x-3">
+                <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" alt="">
+                <span class="flex-1 flex flex-col min-w-0">
+                  <span class="text-gray-900 text-sm font-medium truncate">{{ gUser.username }}</span>
+                  <span class="text-gray-500 text-sm truncate">{{ gUser.email }}</span>
+                </span>
+              </span>
+              <SelectorIcon class="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+            </span>
+          </MenuButton>
         </div>
-      </PopoverPanel>
-    </transition>
-  </Popover>
+        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+          <MenuItems class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none">
+            <div class="py-1">
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">View profile</a>
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">Settings</a>
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">Notifications</a>
+              </MenuItem>
+            </div>
+            <div class="py-1">
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">Get desktop app</a>
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">Support</a>
+              </MenuItem>
+            </div>
+            <div class="py-1">
+              <MenuItem v-slot="{ active }">
+                <a href="#" class="block px-4 py-2 text-sm" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700']">Logout</a>
+              </MenuItem>
+            </div>
+          </MenuItems>
+        </transition>
+      </Menu>
+      <!-- Sidebar Search -->
+      <div class="px-3 mt-5">
+        <label for="search" class="sr-only">Search</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" aria-hidden="true">
+            <SearchIcon class="mr-3 h-4 w-4 text-gray-400" aria-hidden="true" />
+          </div>
+          <input id="search" type="text" name="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-9 sm:text-sm border-gray-300 rounded-md" placeholder="Search">
+        </div>
+      </div>
+      <!-- Navigation -->
+      <nav class="px-3 mt-6">
+        <div class="space-y-1">
+          Roles
+        </div>
+      </nav>
+    </div>
+  </div>
 </template>

@@ -12,6 +12,8 @@ declare module '@vue/runtime-core' {
     AtomHDialogBg: typeof import('./../../../packages/vue-design-system/components/atom/h-dialog-bg.vue')['default']
     AtomHOverlay: typeof import('./../../../packages/vue-design-system/components/atom/h-overlay.vue')['default']
     AtomSectionTitle: typeof import('./../../../packages/vue-design-system/components/atom/section-title.vue')['default']
+    Dialog: typeof import('@headlessui/vue')['Dialog']
+    DialogPanel: typeof import('@headlessui/vue')['DialogPanel']
     ExploreContainer: typeof import('./../../../packages/vue-design-system/components/ExploreContainer.vue')['default']
     FormCheckboxWithValidation: typeof import('./../../../packages/vue-design-system/components/form/checkbox-with-validation.vue')['default']
     FormInputWithValidation: typeof import('./../../../packages/vue-design-system/components/form/input-with-validation.vue')['default']
@@ -19,6 +21,10 @@ declare module '@vue/runtime-core' {
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Logo: typeof import('./../../../packages/vue-design-system/components/Logo.vue')['default']
     MainPanel: typeof import('./components/MainPanel.vue')['default']
+    Menu: typeof import('@headlessui/vue')['Menu']
+    MenuButton: typeof import('@headlessui/vue')['MenuButton']
+    MenuItem: typeof import('@headlessui/vue')['MenuItem']
+    MenuItems: typeof import('@headlessui/vue')['MenuItems']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDropdown: typeof import('naive-ui')['NDropdown']
@@ -33,6 +39,8 @@ declare module '@vue/runtime-core' {
     SidePanel: typeof import('./components/SidePanel.vue')['default']
     TemLoadData: typeof import('./components/tem/LoadData.vue')['default']
     TitleHead: typeof import('./../../../packages/vue-design-system/components/TitleHead.vue')['default']
+    TransitionChild: typeof import('@headlessui/vue')['TransitionChild']
+    TransitionRoot: typeof import('@headlessui/vue')['TransitionRoot']
     UnoIcon: typeof import('./../../../packages/vue-design-system/components/UnoIcon.vue')['default']
   }
 }

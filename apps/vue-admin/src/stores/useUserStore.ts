@@ -5,7 +5,7 @@ import { apolloClient } from '~/modules/apollo-graphql'
 export const useUserStore = defineStore({
   id: 'userStore',
   state: () => ({
-    user: {} as GetUserInfoQuery['me'],
+    user: {} as GetUserInfoQuery['me'] || null,
     currentUser: null,
     reading: null,
     isOrganization: false,
@@ -16,7 +16,9 @@ export const useUserStore = defineStore({
     timeReading: 0,
     theme: 'light' as typeDark,
   }),
-  getters: {},
+  getters: {
+    gUser: state => state.user,
+  },
   actions: {
     async onInit() {
       await this.getUser()
