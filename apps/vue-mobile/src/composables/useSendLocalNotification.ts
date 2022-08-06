@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { LocalNotificationSchema, LocalNotifications } from '@capacitor/local-notifications'
-// import { Badge } from '@robingenz/capacitor-badge'
+// import { Badge } from '@capawesome/capacitor-badge'
 
 export function useSendLocalNotification(datas: LocalNotificationSchema[]) {
   // const count = ref(0)

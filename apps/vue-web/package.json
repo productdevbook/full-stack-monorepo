@@ -17,7 +17,7 @@
     "@intlify/vite-plugin-vue-i18n": "5.0.1",
     "@oku/api": "workspace:*",
     "@popperjs/core": "2.11.5",
-    "@productdevbook/auth": "0.1.2",
+    "@productdevbook/auth": "0.2.1",
     "@vee-validate/i18n": "4.6.2",
     "@vue/apollo-composable": "4.0.0-alpha.19",
     "@vueuse/core": "8.9.4",

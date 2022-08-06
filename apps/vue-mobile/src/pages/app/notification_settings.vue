@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { LocalNotifications } from '@capacitor/local-notifications'
 import { PushNotifications } from '@capacitor/push-notifications'
-import { Badge } from '@robingenz/capacitor-badge'
+import { Badge } from '@capawesome/capacitor-badge'
 import { initNotif } from '~/services/notifications'
 const { t } = useI18n()
 // const isLoading = ref(false)

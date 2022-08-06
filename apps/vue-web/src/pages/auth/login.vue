@@ -8,7 +8,6 @@ import type { SchemaOf } from 'yup'
 import { boolean, object, string } from 'yup'
 import type { SignInInput } from '@oku/api'
 import { useI18n } from 'vue-i18n'
-import { initNotif } from '~/services/notifications'
 
 const userStore = useUserStore()
 const { t } = useI18n()
@@ -61,7 +60,6 @@ const onSubmit = form.handleSubmit(async (values) => {
   {
     onSuccess: (res) => {
       // router.push(res)
-      initNotif()
     },
     onLoading: (res) => {
       isLoading.value = res

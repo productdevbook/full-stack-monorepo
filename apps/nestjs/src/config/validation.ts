@@ -37,6 +37,6 @@ export const validationSchema = Joi.object({
   MAX_FILE_SIZE: Joi.number().required(),
   MAX_FILES: Joi.number().required(),
 
-  FCM_JSON: Joi.string().required(),
+  FCM_JSON: Joi.string(),
 
 })
