@@ -31,9 +31,8 @@ onMounted(() => {
 <template>
   <div class="flex-1-0 flex h-screen flex-col overflow-auto">
     <div class="flex-1-0 flex h-screen flex-col justify-between">
-      <NScrollbar>
-        <router-view />
-      </NScrollbar>
+      <router-view />
+
       <div class="absolute bottom-3 left-5 space-y-4">
         <div>
           <button

@@ -4,15 +4,14 @@ const router = useRouter()
 onMounted(async () => {
   await userStore.onInit()
   setTimeout(() => {
-    console.log(userStore.user)
     if (userStore.user)
-      router.push(userStore.user.username)
+      router.push(`/${userStore.user.username}`)
   }, 2000)
 })
 </script>
 
 <template>
-  <div>
-    {{ userStore }}
+  <div class="flex items-center justify-center h-full w-full animate-pulse">
+    <Logo class="h-10 w-auto" />
   </div>
 </template>

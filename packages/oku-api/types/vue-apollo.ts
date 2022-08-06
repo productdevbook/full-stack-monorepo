@@ -570,7 +570,7 @@ export type CreateTokenNotificationMutation = { __typename?: 'Mutation', saveNot
 export type GetUserInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserInfoQuery = { __typename?: 'Query', me: { __typename?: 'User', id: string, email: string } };
+export type GetUserInfoQuery = { __typename?: 'Query', me: { __typename?: 'User', id: string, email: string, username: string } };
 
 
 export const ForgotPasswordDocument = gql`
@@ -745,6 +745,7 @@ export const GetUserInfoDocument = gql`
   me {
     id
     email
+    username
   }
 }
     `;

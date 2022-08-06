@@ -2,5 +2,6 @@ query GetUserInfo {
   me {
     id
     email
+    username
   }
 }

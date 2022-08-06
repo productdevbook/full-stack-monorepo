@@ -66,7 +66,7 @@ const onSubmit = form.handleSubmit(async (values) => {
       tError(error[0].message)
     },
     onUser: (res) => {
-      router.push('/onlogin')
+      router.push('/auth/onlogin')
     },
   })
 }, onInvalidSubmit)
@@ -79,7 +79,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     <div class="w-full max-w-md space-y-8">
       <div>
         <router-link to="/">
-          <img class="mx-auto h-24 w-auto" src="/logo-light.png" alt="appname">
+          <Logo class="h-16 w-auto mx-auto mb-10" />
         </router-link>
         <h2 class="mt-6 text-center text-3xl font-extrabold">
           Sign in to your account

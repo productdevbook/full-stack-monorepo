@@ -35,11 +35,19 @@ async function bootstrap() {
 
   const urls = config.get<string>('CORS_ORIGIN')!.split(',')
   urls.push(ip)
-  app.enableCors({
-    origin: [...urls, new RegExp(`/^http:\/\/192\.168\.1\.([1-9]|[1-9]\d):${5000}$/`), /^https?:\/\/192\.168\.0\.[0-9]{1,3}/],
-    credentials: true,
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  })
+  if (process.env.NODE_ENV === 'development') {
+    app.enableCors({
+      origin: [...urls, '*'],
+      credentials: true,
+    })
+  }
+  else {
+    app.enableCors({
+      origin: [...urls],
+      credentials: true,
+      optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    })
+  }
 
   const configService = app.get(ConfigService)
   const port = configService.get('PORT')

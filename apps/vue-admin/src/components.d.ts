@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     FormInputWithValidation: typeof import('./../../../packages/vue-design-system/components/form/input-with-validation.vue')['default']
     FormSection: typeof import('./../../../packages/vue-design-system/components/form/section.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    Logo: typeof import('./../../../packages/vue-design-system/components/Logo.vue')['default']
     MainPanel: typeof import('./components/MainPanel.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']

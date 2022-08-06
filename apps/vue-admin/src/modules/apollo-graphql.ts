@@ -14,12 +14,14 @@ import { createUploadLink } from 'apollo-upload-client'
 import type { Client } from 'graphql-ws'
 import { createClient } from 'graphql-ws'
 import { DefaultApolloClient } from '@vue/apollo-composable'
-import { asyncMap, getMainDefinition } from '@apollo/client/utilities'
-import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
-import sha256 from 'crypto-js/sha256'
+import { getMainDefinition } from '@apollo/client/utilities'
+// import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
+// import sha256 from 'crypto-js/sha256'
+
 import { AppModule } from 'vue-app/types'
 import { print } from 'graphql'
 import { useAuth } from '~/composables/auth'
+import router from '~/router'
 const uri = import.meta.env.VITE_GRAPHQL_ENDPOINT
 const socket = import.meta.env.VITE_GRAPHQL_ENDPOINT_WS
 
@@ -84,13 +86,12 @@ const httpLink = createUploadLink({
   credentials: 'same-origin',
 })
 
-const apqLink = createPersistedQueryLink({
-  sha256: i => sha256(i).toString(),
-})
+// const apqLink = createPersistedQueryLink({
+//   sha256: i => sha256(i).toString(),
+// })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const { token } = operation.getContext()
-  console.log(operation.getContext())
   operation.setContext(() => ({
     headers: {
       Authorization: token ? `Bearer ${token}` : '',
@@ -98,6 +99,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   }))
   return forward(operation)
 })
+
 const splitLink = () => {
   return split(
     ({ query }) => {
@@ -119,7 +121,20 @@ const errorHandler = () => {
       for (const err of graphQLErrors) {
         switch (err.message) {
           case 'Unauthorized':
-            return fromPromise(refreshToken())
+            return fromPromise(
+              refreshToken({
+                onError: (_) => {
+                  const oldHeaders = operation.getContext().headers
+                  operation.setContext({
+                    header: {
+                      ...oldHeaders,
+                      authorization: '',
+                    },
+                  })
+                  router.push('/auth/login')
+                },
+              }),
+            )
               .filter(value => Boolean(value))
               .flatMap((accessToken) => {
                 const oldHeaders = operation.getContext().headers
