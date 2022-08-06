@@ -1,3 +1,6 @@
+
+![](docs/productdevbook.png)
+
 ### Website
 * http://localhost:3000 - vue
 * http://localhost:5000 - vue-mobile
@@ -7,5 +10,11 @@
 
 ```properties
 pnpm install
+docker-compose up
+```
+
+Docker running
+```properties
+pnpm db:up
 pnpm dev
 ```
