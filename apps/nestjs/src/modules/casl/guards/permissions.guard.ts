@@ -29,17 +29,17 @@ export class PermissionsGuard implements CanActivate {
 
     const roles = GqlExecutionContext.create(context).getContext().req.user.roles
 
-    const permissions: Permission[] = []
+    const permissions: any[] = []
 
     roles.forEach((r: any) => {
-      permissions.push(r.permission)
+      r.permissions.forEach((p: any) => {
+        permissions.push({ action: p.action, subject: p.subject.name })
+      })
     })
 
     const ability = await this.abilityFactory.createForUser(
       permissions,
     )
-    console.log(GqlExecutionContext.create(context).getContext().req.user)
-    console.log(roles)
 
     return requiredPermissions.every(permission =>
       PermissionsGuard.isAllowed(ability, permission),

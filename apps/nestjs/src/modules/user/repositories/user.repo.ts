@@ -16,7 +16,7 @@ export class UserRepository {
   }
 
   public async findOne(id: string) {
-    const user = await this.userRepo.findOneOrFail({ id }, { populate: ['roles'] })
+    const user = await this.userRepo.findOneOrFail({ id }, { populate: ['roles.permissions'] })
     return user
   }
 }

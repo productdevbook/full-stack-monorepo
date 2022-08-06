@@ -76,6 +76,7 @@ export class AuthRepository {
     const user = await this.userRepository.createQueryBuilder('user')
       .leftJoinAndSelect('user.roles', 'userRole')
       .leftJoinAndSelect('userRole.permissions', 'userRolePermission')
+      .leftJoinAndSelect('userRolePermission.subject', 'userRolePermissionSubject')
       .where(`"user".id = '${id}'`)
       .getSingleResult()
 

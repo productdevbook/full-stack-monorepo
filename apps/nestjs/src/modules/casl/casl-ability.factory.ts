@@ -13,14 +13,15 @@ export class CaslAbilityFactory {
  * @param {Permission[] | undefined} permissions - Permission[] | undefined
  * @returns An ability object
  */
-  async createForUser(permissions: Permission[] | undefined): Promise<AppAbilityType> {
+  async createForUser(permissions: any[] | undefined): Promise<AppAbilityType> {
     if (!permissions)
       throw new Error(permissions)
 
-    const caslPermissions: PermissionInterface[] = permissions.map(p => ({
-      action: p.action,
-      subject: p.subject.property.name,
-    }))
+    const caslPermissions: PermissionInterface[] = permissions.map(p => (
+      {
+        action: p.action,
+        subject: p.subject,
+      }))
     return new Ability<[ActionEnum, PermissionObjectType]>(caslPermissions)
   }
 }

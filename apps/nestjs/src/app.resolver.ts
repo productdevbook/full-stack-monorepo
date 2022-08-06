@@ -26,5 +26,12 @@ export class AuthResolver {
   async permiswork() {
     return 'perm works'
   }
+
+  @UseGuards(PermissionsGuard)
+  @CheckPermissions([ActionEnum.DELETE, 'TODO'])
+  @Query(() => String)
+  async permiswork2() {
+    return 'perm works'
+  }
 }
 
