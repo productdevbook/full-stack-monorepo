@@ -7,10 +7,12 @@ import { IConfig } from '@/config/interfaces/config.interface'
 @Injectable()
 export class NotificationService {
   constructor(configService: ConfigService<IConfig>) {
-    const firebaseCredentials = JSON.parse(configService.get('fcm_json').replace(/'/g, '"'))
-    firebase.initializeApp({
-      credential: firebase.credential.cert(firebaseCredentials),
-    })
+    if (configService.get('fcm_json')) {
+      const firebaseCredentials = JSON.parse(configService.get('fcm_json').replace(/'/g, '"'))
+      firebase.initializeApp({
+        credential: firebase.credential.cert(firebaseCredentials),
+      })
+    }
   }
 
   async sendToDevice(title: string, data: Notification = { title: 'Title', body: 'body' }, token: string): Promise<Boolean> {
