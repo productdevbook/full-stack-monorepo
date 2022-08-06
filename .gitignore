@@ -47,11 +47,9 @@ dist/**
 !.yarn/sdks
 !.yarn/versions
 
-# OSX
-.DS_Store
-
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 GoogleService-Info.plist
 
 tsconfig.build.tsbuildinfo
+/.idea/*

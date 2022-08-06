@@ -32,7 +32,7 @@ export class AuthRepository {
       ...data,
       lastLoginAt: new Date(),
       createdAt: new Date(),
-      is_terms_accepted: data.isTermsAccepted,
+      isTermsAccepted: data.isTermsAccepted,
     })
 
     const newSettings = this.userSettingRepo.create({
@@ -64,6 +64,20 @@ export class AuthRepository {
   public async findUser(email: string): Promise<User> {
     const user = await this.userRepository.createQueryBuilder()
       .where(`email = '${email}'`)
+      .getSingleResult()
+
+    if (!user)
+      throw new HttpException(await this.i18n.error('ierror.user_dont_found'), HttpStatus.UNPROCESSABLE_ENTITY)
+    return user
+  }
+
+  // simdi burada hangi tabloya baglanmamiz gerekiyor
+  public async findUserById(id: string): Promise<User> {
+    const user = await this.userRepository.createQueryBuilder('user')
+      .leftJoinAndSelect('user.roles', 'userRole')
+      .leftJoinAndSelect('userRole.permissions', 'userRolePermission')
+      .leftJoinAndSelect('userRolePermission.subject', 'userRolePermissionSubject')
+      .where(`"user".id = '${id}'`)
       .getSingleResult()
 
     if (!user)

@@ -22,14 +22,17 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "migrate:init": "mikro-orm migration:create --initial",
     "migrate:create": "npx mikro-orm migration:create",
     "migrate:update": "npx mikro-orm schema:update --run",
-    "migrate:push": "npx mikro-orm migration:up",
-    "migrate:drop": "npx mikro-orm schema:fresh --run"
+    "migrate:up": "npx mikro-orm migration:up",
+    "migrate:down": "npx mikro-orm migration:down",
+    "migrate:fresh": "npx mikro-orm schema:fresh --run",
+    "seeder:run": "mikro-orm seeder:run --class=DatabaseSeeder"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.135.0",
-    "@casl/ability": "5.4.4",
+    "@casl/ability": "6.0.0",
     "@liaoliaots/nestjs-redis": "9.0.1",
     "@mikro-orm/cli": "5.2.4",
     "@mikro-orm/core": "5.2.4",

@@ -13,8 +13,8 @@ export class UserService {
     private readonly notiService: NotificationService,
   ) {}
 
-  async me(username: string) {
-    return this.userRepo.findOne(username)
+  async me(id: string) {
+    return this.userRepo.findOne(id)
   }
 
   async createToken(data: CreateNotificationTokenInput, user: JwtArgs) {

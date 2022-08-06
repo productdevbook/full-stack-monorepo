@@ -1,6 +1,8 @@
+import { Permission, Role } from '@/entities'
+
 export interface JwtArgs {
   id: string
-  roles?: string[]
+  roles?: Role[] | unknown
   /**
    * Issued at
    */
@@ -12,7 +14,7 @@ export interface JwtArgs {
   token_type?: 'access' | 'refresh'
   jti: string
   username: string
-  permissions?: string[]
+  permissions?: Permission[]
 
   aud?: string
   iss?: string

@@ -2,6 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+enum ActionEnum {
+  CREATE
+  DELETE
+  MANAGE
+  READ
+  UPDATE
+}
+
+input AddPermissionInput {
+  permissionId: String!
+  roleId: String!
+}
+
+input AddRoleInput {
+  roleId: String!
+  userId: String!
+}
+
 type City {
   archived: Boolean!
   country: Country
@@ -41,12 +59,26 @@ type Country {
   userSettings: [UserSetting!]!
 }
 
+input CreateAdminRoleInput {
+  description: String!
+  name: String!
+}
+
 input CreateNotificationTokenInput {
   """Example field (placeholder)"""
   deviceId: String!
 
   """Example field (placeholder)"""
   token: String!
+}
+
+input CreatePermissionInput {
+  action: ActionEnum!
+  subjectId: ID!
+}
+
+input CreateSubjectInput {
+  name: String!
 }
 
 type Currency {
@@ -105,15 +137,28 @@ type Menu {
 }
 
 type Mutation {
+  addPermissionToRole(addPermission: AddPermissionInput!): Role!
+  addRoleToUser(addRole: AddRoleInput!): Role!
+  createAdminRole(data: CreateAdminRoleInput!): Role!
+  createPermission(data: CreatePermissionInput!): Permission!
+  createSubject(data: CreateSubjectInput!): Subject!
+  deletePermission(id: String!): Permission!
+  deleteRole(id: String!): Role!
+  deleteSubject(id: String!): Subject!
   forgotPassword(data: ForgotPasswordInput!): Boolean!
   logout: Boolean!
   refreshToken(data: RefreshTokenInput!): TokenResponse!
+  removePermissionFromRole(removePermission: AddPermissionInput!): Role!
+  removeRoleFromUser(addRole: AddRoleInput!): Role!
   resetPassword(data: ResetPasswordInput!): Boolean!
   saveNotificationToken(data: CreateNotificationTokenInput!): NotificationToken!
   sendNotificationToken(data: SendNotificationInput!): Boolean!
   signIn(data: SignInInput!): TokenResponse!
   signUp(data: SignUpInput!): User!
   terminateSession(data: TerminateSessionInput!): Boolean!
+  updatePermission(data: UpdatePermissionInput!, id: String!): Permission!
+  updateRole(data: UpdateRoleInput!, id: String!): Role!
+  updateSubject(data: UpdateSubjectInput!, id: String!): Subject!
 }
 
 type NotificationToken {
@@ -175,10 +220,31 @@ type PageMenuRole {
   updatedAt: DateTime
 }
 
+type Permission {
+  action: ActionEnum!
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  roles: [Role!]!
+  subject: Subject!
+  updatedAt: DateTime
+}
+
 type Query {
   example(data: ExampleInput!): String!
   me: User!
+  permissions: [Permission!]!
+  permiswork: String!
+  permiswork2: String!
+  role(name: String!): Role!
+  roles: [Role!]!
   sessions: [Session!]!
+  subject(name: String!): Subject!
+  subjects: [Subject!]!
 }
 
 input RefreshTokenInput {
@@ -196,14 +262,15 @@ type Role {
   createdAt: DateTime!
   deleted: Boolean!
   deletedAt: DateTime
+  description: String!
   disabled: Boolean!
   hidden: Boolean!
   id: ID!
   name: String!
-  name_en: String
   pageMenus: [PageMenuRole!]
+  permissions: [Permission!]
   updatedAt: DateTime
-  userRoles: [UserRole!]!
+  users: [User!]
 }
 
 input SendNotificationInput {
@@ -285,7 +352,7 @@ enum SiteThemeEnum {
 }
 
 type State {
-  country: [Country!]!
+  country: Country!
   countryCode: String!
   countryName: String!
   id: ID!
@@ -295,6 +362,18 @@ type State {
   stateCode: String!
   type: String
   userSettings: [UserSetting!]!
+}
+
+type Subject {
+  archived: Boolean!
+  createdAt: DateTime!
+  deleted: Boolean!
+  deletedAt: DateTime
+  disabled: Boolean!
+  hidden: Boolean!
+  id: ID!
+  name: String!
+  updatedAt: DateTime
 }
 
 input TerminateSessionInput {
@@ -307,6 +386,20 @@ type TokenResponse {
 
   """JWT refresh token"""
   refreshToken: JWT!
+}
+
+input UpdatePermissionInput {
+  action: ActionEnum
+  subjectId: ID
+}
+
+input UpdateRoleInput {
+  description: String
+  name: String
+}
+
+input UpdateSubjectInput {
+  name: String
 }
 
 type User {
@@ -334,7 +427,7 @@ type User {
   image: String
 
   """Example field (placeholder)"""
-  is_terms_accepted: String!
+  isTermsAccepted: String!
 
   """last login time"""
   lastLoginAt: DateTime
@@ -348,6 +441,7 @@ type User {
   """User notification tokens"""
   notificationToken: [NotificationToken!]
   providerAccountId: String
+  roles: [Role!]
   updatedAt: DateTime
   userSetting: UserSetting!
 
@@ -446,19 +540,6 @@ type UserDevice {
 
   """device UA"""
   userAgent: UserAgent!
-}
-
-type UserRole {
-  archived: Boolean!
-  createdAt: DateTime!
-  deleted: Boolean!
-  deletedAt: DateTime
-  disabled: Boolean!
-  hidden: Boolean!
-  id: ID!
-  role: Role!
-  updatedAt: DateTime
-  user: User!
 }
 
 type UserSetting {

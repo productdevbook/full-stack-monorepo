@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Collection, Entity, IdentifiedReference, ManyToOne, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
+import { Collection, Entity, ManyToOne, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
 // import { BaseModel } from './base.model'
 // import { City } from './city.entity'
 import { UserSetting } from './user-setting.entity'
@@ -49,9 +49,9 @@ export class State {
   @Field(() => String, { nullable: false })
     longitude!: string
 
-  @ManyToOne({ entity: () => Country, nullable: false })
-  @Field(() => [Country])
-    country!: IdentifiedReference<Country>
+  @ManyToOne({ entity: () => Country })
+  @Field(() => Country)
+    country!: Country
 
   @OneToMany(() => UserSetting, userSetting => userSetting.state, {
     eager: true,

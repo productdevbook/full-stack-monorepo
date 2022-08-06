@@ -257,14 +257,14 @@ export type Role = {
   createdAt: Scalars['DateTime'];
   deleted: Scalars['Boolean'];
   deletedAt?: Maybe<Scalars['DateTime']>;
+  description: Scalars['String'];
   disabled: Scalars['Boolean'];
   hidden: Scalars['Boolean'];
   id: Scalars['ID'];
   name: Scalars['String'];
-  name_en?: Maybe<Scalars['String']>;
   pageMenus?: Maybe<Array<PageMenuRole>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-  userRoles: Array<UserRole>;
+  users?: Maybe<Array<User>>;
 };
 
 export type SendNotificationInput = {
@@ -356,6 +356,19 @@ export type State = {
   userSettings: Array<UserSetting>;
 };
 
+export type Subject = {
+  __typename?: 'Subject';
+  archived: Scalars['Boolean'];
+  createdAt: Scalars['DateTime'];
+  deleted: Scalars['Boolean'];
+  deletedAt?: Maybe<Scalars['DateTime']>;
+  disabled: Scalars['Boolean'];
+  hidden: Scalars['Boolean'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type TerminateSessionInput = {
   jti: Scalars['String'];
 };
@@ -388,7 +401,7 @@ export type User = {
   /** Example field (placeholder) */
   image?: Maybe<Scalars['String']>;
   /** Example field (placeholder) */
-  is_terms_accepted: Scalars['String'];
+  isTermsAccepted: Scalars['String'];
   /** last login time */
   lastLoginAt?: Maybe<Scalars['DateTime']>;
   /** Last login IP */
@@ -398,6 +411,7 @@ export type User = {
   /** User notification tokens */
   notificationToken?: Maybe<Array<NotificationToken>>;
   providerAccountId?: Maybe<Scalars['String']>;
+  roles?: Maybe<Array<Role>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   userSetting: UserSetting;
   /** Example field (username) */
@@ -486,20 +500,6 @@ export type UserDevice = {
   user: User;
   /** device UA */
   userAgent: UserAgent;
-};
-
-export type UserRole = {
-  __typename?: 'UserRole';
-  archived: Scalars['Boolean'];
-  createdAt: Scalars['DateTime'];
-  deleted: Scalars['Boolean'];
-  deletedAt?: Maybe<Scalars['DateTime']>;
-  disabled: Scalars['Boolean'];
-  hidden: Scalars['Boolean'];
-  id: Scalars['ID'];
-  role: Role;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  user: User;
 };
 
 export type UserSetting = {

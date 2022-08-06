@@ -16,6 +16,14 @@ pnpm install
 docker-compose up
 ```
 
+
+### Docker
+workspace: nestjs
+
+```bash
+$ cd resources
+$ docker compose up
+```
 ### Env setup
 Example env file change name to .env
 ```

@@ -360,11 +360,13 @@ export class AuthService {
     const userAgent = UAParser(req.header('user-agent'))
 
     const jti = this.generateJti(userId)
-
+    const user = await this.authRepository.findUserById(userId)
+    // TODO @uzunertoprak: roles donus yolu duzeltilecek
     const _accessToken = await this.generateAccessToken({
       id: userId,
       username,
       jti,
+      roles: user.roles,
     })
 
     const sessionData = new Session()
