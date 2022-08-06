@@ -361,12 +361,12 @@ export class AuthService {
 
     const jti = this.generateJti(userId)
     const user = await this.authRepository.findUserById(userId)
-    console.log(user)
+    // TODO @uzunertoprak: roles donus yolu duzeltilecek
     const _accessToken = await this.generateAccessToken({
       id: userId,
       username,
       jti,
-      roles: [],
+      roles: user.roles,
     })
 
     const sessionData = new Session()

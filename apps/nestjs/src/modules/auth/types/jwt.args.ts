@@ -2,7 +2,7 @@ import { Permission } from '@/entities'
 
 export interface JwtArgs {
   id: string
-  roles?: string[]
+  roles?: any[]
   /**
    * Issued at
    */

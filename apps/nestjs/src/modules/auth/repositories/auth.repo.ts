@@ -73,8 +73,12 @@ export class AuthRepository {
 
   // simdi burada hangi tabloya baglanmamiz gerekiyor
   public async findUserById(id: string): Promise<User> {
-    const user = await this.userRepository.findOne({ id }, { populate: ['roles'] })
-    console.log(user)
+    const user = await this.userRepository.createQueryBuilder('user')
+      .leftJoinAndSelect('user.roles', 'userRole')
+      .leftJoinAndSelect('userRole.permissions', 'userRolePermission')
+      .where(`"user".id = '${id}'`)
+      .getSingleResult()
+
     if (!user)
       throw new HttpException(await this.i18n.error('ierror.user_dont_found'), HttpStatus.UNPROCESSABLE_ENTITY)
     return user
