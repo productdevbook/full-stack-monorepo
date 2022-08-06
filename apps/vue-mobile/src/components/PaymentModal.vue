@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SwiperOptions } from 'swiper'
-import { Package, PurchaserInfo } from 'capacitor-purchases'
+import { Package, PurchaserInfo } from '@capgo/capacitor-purchases'
 import { Dialog } from '@capacitor/dialog'
 
 import {

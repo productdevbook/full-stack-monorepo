@@ -1,5 +1,5 @@
 /// <reference types="@capacitor/push-notifications" />
-/// <reference types="@robingenz/capacitor-badge" />
+/// <reference types="@capawesome/capacitor-badge" />
 
 
 import {CapacitorConfig} from '@capacitor/cli'
