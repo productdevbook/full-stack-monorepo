@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "lib": [
+      "DOM",
+      "ESNext",
+      "WebWorker"
+    ],
+    "strict": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "types": [
+      "vue",
+      "node",
+      "vite/client",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client",
+      "vite-plugin-pwa/client",
+      "@intlify/vite-plugin-vue-i18n/client",
+      "naive-ui/volar",
+      "vite-plugin-glob/client"
+    ],
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "#root": [
+        "./"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.worker.ts",
+    "dev-dist",
+    "*.js"
+  ],
+}

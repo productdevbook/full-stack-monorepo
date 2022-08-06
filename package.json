@@ -7,6 +7,7 @@
     "dev:vue-storybook": "turbo run dev --parallel --no-cache --filter=@productdevbook/storybook-vue",
     "dev:web": "turbo run dev --parallel --no-cache --filter=vue-web --filter=@oku/api --filter=app-nestjs --filter=oku-i18n",
     "dev:mobile": "turbo run dev --parallel --no-cache --filter=vue-mobile --filter=@oku/api  --filter=app-nestjs --filter=oku-i18n",
+    "dev:admin": "turbo run dev --parallel --no-cache --filter=vue-admin --filter=@oku/api --filter=app-nestjs --filter=oku-i18n",
     "dev:ui:web": "turbo run dev --parallel --no-cache --filter=vue-web --filter=@productdevbook/storybook-vue",
     "dev:ui:mobile": "turbo run dev --parallel --no-cache --filter=vue-mobile --filter=@productdevbook/storybook-vue",
     "dev:nestjs": "turbo run dev --filter=app-nestjs",
@@ -57,7 +58,8 @@
     "@productdevbook/email": "workspace:*",
     "app-nestjs": "workspace:*",
     "vue-mobile": "workspace:*",
-    "vue-web": "workspace:*"
+    "vue-web": "workspace:*",
+    "vue-admin": "workspace:*"
   },
   "packageManager": "pnpm@7.6.0",
   "dependencies": {
