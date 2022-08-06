@@ -702,15 +702,6 @@
     },
     {
       "columns": {
-        "permission_id": {
-          "name": "permission_id",
-          "type": "uuid",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "uuid"
-        },
         "role_id": {
           "name": "role_id",
           "type": "uuid",
@@ -719,16 +710,25 @@
           "primary": false,
           "nullable": false,
           "mappedType": "uuid"
+        },
+        "permission_id": {
+          "name": "permission_id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
         }
       },
-      "name": "permission_roles",
+      "name": "role_permissions",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "permission_roles_pkey",
+          "keyName": "role_permissions_pkey",
           "columnNames": [
-            "permission_id",
-            "role_id"
+            "role_id",
+            "permission_id"
           ],
           "composite": true,
           "primary": true,
@@ -737,29 +737,29 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "permission_roles_permission_id_foreign": {
-          "constraintName": "permission_roles_permission_id_foreign",
-          "columnNames": [
-            "permission_id"
-          ],
-          "localTableName": "public.permission_roles",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "public.permission",
-          "deleteRule": "cascade",
-          "updateRule": "cascade"
-        },
-        "permission_roles_role_id_foreign": {
-          "constraintName": "permission_roles_role_id_foreign",
+        "role_permissions_role_id_foreign": {
+          "constraintName": "role_permissions_role_id_foreign",
           "columnNames": [
             "role_id"
           ],
-          "localTableName": "public.permission_roles",
+          "localTableName": "public.role_permissions",
           "referencedColumnNames": [
             "id"
           ],
           "referencedTableName": "public.role",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "role_permissions_permission_id_foreign": {
+          "constraintName": "role_permissions_permission_id_foreign",
+          "columnNames": [
+            "permission_id"
+          ],
+          "localTableName": "public.role_permissions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.permission",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         }
@@ -2813,168 +2813,6 @@
           "default": "false",
           "mappedType": "boolean"
         },
-        "role_id": {
-          "name": "role_id",
-          "type": "uuid",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "uuid"
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "uuid"
-        }
-      },
-      "name": "userRole",
-      "schema": "public",
-      "indexes": [
-        {
-          "columnNames": [
-            "created_at"
-          ],
-          "composite": false,
-          "keyName": "userRole_created_at_index",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "keyName": "userRole_role_id_user_id_unique",
-          "columnNames": [
-            "role_id",
-            "user_id"
-          ],
-          "composite": true,
-          "primary": false,
-          "unique": true
-        },
-        {
-          "keyName": "userRole_pkey",
-          "columnNames": [
-            "id"
-          ],
-          "composite": false,
-          "primary": true,
-          "unique": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {
-        "userRole_role_id_foreign": {
-          "constraintName": "userRole_role_id_foreign",
-          "columnNames": [
-            "role_id"
-          ],
-          "localTableName": "public.userRole",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "public.role",
-          "deleteRule": "cascade"
-        },
-        "userRole_user_id_foreign": {
-          "constraintName": "userRole_user_id_foreign",
-          "columnNames": [
-            "user_id"
-          ],
-          "localTableName": "public.userRole",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "public.user",
-          "deleteRule": "CASCADE",
-          "updateRule": "cascade"
-        }
-      }
-    },
-    {
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "default": "uuid_generate_v4()",
-          "mappedType": "uuid"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "deleted": {
-          "name": "deleted",
-          "type": "boolean",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "default": "false",
-          "mappedType": "boolean"
-        },
-        "hidden": {
-          "name": "hidden",
-          "type": "boolean",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "default": "false",
-          "mappedType": "boolean"
-        },
-        "disabled": {
-          "name": "disabled",
-          "type": "boolean",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "default": "false",
-          "mappedType": "boolean"
-        },
-        "archived": {
-          "name": "archived",
-          "type": "boolean",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "default": "false",
-          "mappedType": "boolean"
-        },
         "timezone": {
           "name": "timezone",
           "type": "varchar(200)",
@@ -3176,15 +3014,6 @@
     },
     {
       "columns": {
-        "role_id": {
-          "name": "role_id",
-          "type": "uuid",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "uuid"
-        },
         "user_id": {
           "name": "user_id",
           "type": "uuid",
@@ -3193,16 +3022,25 @@
           "primary": false,
           "nullable": false,
           "mappedType": "uuid"
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
         }
       },
-      "name": "role_users",
+      "name": "user_roles",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "role_users_pkey",
+          "keyName": "user_roles_pkey",
           "columnNames": [
-            "role_id",
-            "user_id"
+            "user_id",
+            "role_id"
           ],
           "composite": true,
           "primary": true,
@@ -3211,29 +3049,29 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "role_users_role_id_foreign": {
-          "constraintName": "role_users_role_id_foreign",
-          "columnNames": [
-            "role_id"
-          ],
-          "localTableName": "public.role_users",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "public.role",
-          "deleteRule": "cascade",
-          "updateRule": "cascade"
-        },
-        "role_users_user_id_foreign": {
-          "constraintName": "role_users_user_id_foreign",
+        "user_roles_user_id_foreign": {
+          "constraintName": "user_roles_user_id_foreign",
           "columnNames": [
             "user_id"
           ],
-          "localTableName": "public.role_users",
+          "localTableName": "public.user_roles",
           "referencedColumnNames": [
             "id"
           ],
           "referencedTableName": "public.user",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "user_roles_role_id_foreign": {
+          "constraintName": "user_roles_role_id_foreign",
+          "columnNames": [
+            "role_id"
+          ],
+          "localTableName": "public.user_roles",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.role",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         }

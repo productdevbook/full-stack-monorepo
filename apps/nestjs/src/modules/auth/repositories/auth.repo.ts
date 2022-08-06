@@ -70,4 +70,13 @@ export class AuthRepository {
       throw new HttpException(await this.i18n.error('ierror.user_dont_found'), HttpStatus.UNPROCESSABLE_ENTITY)
     return user
   }
+
+  // simdi burada hangi tabloya baglanmamiz gerekiyor
+  public async findUserById(id: string): Promise<User> {
+    const user = await this.userRepository.findOne({ id }, { populate: ['roles'] })
+    console.log(user)
+    if (!user)
+      throw new HttpException(await this.i18n.error('ierror.user_dont_found'), HttpStatus.UNPROCESSABLE_ENTITY)
+    return user
+  }
 }
