@@ -5,6 +5,7 @@ import { AppAbilityType } from '@/modules/casl/interfaces/app-ability.type'
 import { PERMISSION_CHECKER_KEY, RequiredPermission } from '@/modules/casl/decorators/check-permissions.decorator'
 import { CaslAbilityFactory } from '@/modules/casl/casl-ability.factory'
 import { RequiredPermissionType } from '@/modules/casl/interfaces/required-permission.type'
+import { Permission, Role } from '@/entities'
 
 @Injectable()
 export class PermissionsGuard implements CanActivate {
@@ -26,11 +27,19 @@ export class PermissionsGuard implements CanActivate {
         context.getHandler(),
       ) || []
 
-    const user = GqlExecutionContext.create(context).getContext().req.user
+    const roles = GqlExecutionContext.create(context).getContext().req.user.roles
+
+    const permissions: Permission[] = []
+
+    roles.forEach((r: any) => {
+      permissions.push(r.permission)
+    })
 
     const ability = await this.abilityFactory.createForUser(
-      user.roles,
+      permissions,
     )
+    console.log(GqlExecutionContext.create(context).getContext().req.user)
+    console.log(roles)
 
     return requiredPermissions.every(permission =>
       PermissionsGuard.isAllowed(ability, permission),

@@ -1,8 +1,8 @@
-import { Permission } from '@/entities'
+import { Permission, Role } from '@/entities'
 
 export interface JwtArgs {
   id: string
-  roles?: any[]
+  roles?: Role[] | unknown
   /**
    * Issued at
    */
