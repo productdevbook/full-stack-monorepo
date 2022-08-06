@@ -4,9 +4,9 @@ import axios from 'axios'
 import 'uno.css'
 import './assets/base.css'
 import { createHead } from '@vueuse/head'
-import { onMessage } from 'firebase/messaging'
+// import { onMessage } from 'firebase/messaging'
 import router, { routes } from './router'
-import { messaging } from './services/notifications'
+// import { messaging } from './services/notifications'
 import App from './App.vue'
 
 const meta = document.createElement('meta')
