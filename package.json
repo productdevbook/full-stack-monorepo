@@ -4,16 +4,16 @@
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "turbo run dev --parallel --no-cache",
-    "dev:vue-storybook": "turbo run dev --parallel --no-cache --scope=@productdevbook/storybook-vue",
-    "dev:web": "turbo run dev --parallel --no-cache --scope=vue-web --scope=@oku/api --scope=app-nestjs --scope=oku-i18n",
-    "dev:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@oku/api  --scope=app-nestjs --scope=oku-i18n",
-    "dev:ui:web": "turbo run dev --parallel --no-cache --scope=vue-web --scope=@productdevbook/storybook-vue",
-    "dev:ui:mobile": "turbo run dev --parallel --no-cache --scope=vue-mobile --scope=@productdevbook/storybook-vue",
+    "dev:vue-storybook": "turbo run dev --parallel --no-cache --filter=@productdevbook/storybook-vue",
+    "dev:web": "turbo run dev --parallel --no-cache --filter=vue-web --filter=@oku/api --filter=app-nestjs --filter=oku-i18n",
+    "dev:mobile": "turbo run dev --parallel --no-cache --filter=vue-mobile --filter=@oku/api  --filter=app-nestjs --filter=oku-i18n",
+    "dev:ui:web": "turbo run dev --parallel --no-cache --filter=vue-web --filter=@productdevbook/storybook-vue",
+    "dev:ui:mobile": "turbo run dev --parallel --no-cache --filter=vue-mobile --filter=@productdevbook/storybook-vue",
     "dev:nestjs": "turbo run dev --filter=app-nestjs",
     "build": "turbo run build",
-    "build:nestjs": "turbo run build --parallel --scope=app-nestjs",
-    "build:vue-web": "turbo run build --parallel --scope=vue-web",
-    "build:vue-mobile": "turbo run build --parallel --scope=vue-mobile",
+    "build:nestjs": "turbo run build --parallel --filter=app-nestjs",
+    "build:vue-web": "turbo run build --parallel --filter=vue-web",
+    "build:vue-mobile": "turbo run build --parallel --filter=vue-mobile",
     "app": "pnpm --filter vue-mobile refresh",
     "run:android": "pnpm --filter vue-mobile ionic capacitor run android",
     "run:ios": "pnpm --filter vue-mobile ionic capacitor run ios",
@@ -59,10 +59,6 @@
     "app-nestjs": "workspace:*",
     "vue-mobile": "workspace:*",
     "vue-web": "workspace:*"
-  },
-  "engines": {
-    "npm": "8.x",
-    "node": "16.x"
   },
   "packageManager": "pnpm@7.6.0",
   "dependencies": {

@@ -34,14 +34,16 @@ async function init() {
     initializeForTesting: import.meta.env.DEV,
   })
   try {
-    if (isPlatform('ios'))
+    if (isPlatform('ios') && import.meta.env.VITE_REVENU_IOS_ID)
       initIap(import.meta.env.VITE_REVENU_IOS_ID)
 
-    else if (isPlatform('android'))
+    else if (isPlatform('android') && import.meta.env.VITE_REVENU_ANDROID_ID)
       initIap(import.meta.env.VITE_REVENU_ANDROID_ID)
 
-    initNotif()
-    initCrisp()
+    if (import.meta.env.VITE_FIREBASE_CONFIG)
+      initNotif()
+    if (import.meta.env.VITE_CRISP_KEY)
+      initCrisp()
 
     Object.values(import.meta.glob('./modules/*.ts', { eager: true })).map((i: any) =>
       i.install?.({ app, router, routes, pinia, axios }),

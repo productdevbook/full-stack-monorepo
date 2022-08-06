@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  monorepo:
+  postgres:
     image: postgres:latest
     platform: linux/x86_64
     restart: unless-stopped
@@ -14,7 +14,7 @@ services:
       - monorepo:/var/lib/postgresql/data
       - ./initdb:/docker-entrypoint-initdb.d
 
-  redisnonorepo:
+  redis:
     image: redis:latest
     restart: unless-stopped
     ports:
