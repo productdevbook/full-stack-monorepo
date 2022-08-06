@@ -13,7 +13,7 @@ export const validationSchema = Joi.object({
   JWT_PRIVATE_KEY: Joi.string().required(),
   JWT_EXPIRES_IN: Joi.string().required(),
   JWT_AUDIENCE: Joi.string().required(),
-  JWT_ISSUER: Joi.string().required(),
+  JWT_ISSUER: Joi.string(),
 
   JWT_COOKIE_NAME: Joi.string().required(),
   JWT_REFRESH_EXPIRES_IN: Joi.string().required(),
@@ -37,6 +37,6 @@ export const validationSchema = Joi.object({
   MAX_FILE_SIZE: Joi.number().required(),
   MAX_FILES: Joi.number().required(),
 
-  FCM_JSON: Joi.string().required(),
+  FCM_JSON: Joi.string(),
 
 })
