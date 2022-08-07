@@ -7,7 +7,7 @@
     "lint:fix": "eslint --fix \"./**/*.{ts,vue}\""
   },
   "devDependencies": {
-    "@vueuse/core": "9.0.2",
+    "@vueuse/core": "9.1.0",
     "canvas-confetti": "1.5.1",
     "naive-ui": "2.32.1",
     "oku-i18n": "workspace:*",
@@ -15,7 +15,7 @@
     "vee-validate": "4.6.2",
     "vue": "^3.2.37",
     "vue-design-system": "workspace:*",
-    "vue-i18n": "9.2.0-beta.40",
+    "vue-i18n": "9.2.2",
     "vue-router": "^4.1.2",
     "yup": "0.32.11"
   }
