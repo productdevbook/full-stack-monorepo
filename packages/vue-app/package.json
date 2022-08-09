@@ -12,7 +12,7 @@
     "naive-ui": "2.32.1",
     "oku-i18n": "workspace:*",
     "@oku/tsconfig": "workspace:*",
-    "vee-validate": "4.6.2",
+    "vee-validate": "4.6.4",
     "vue": "^3.2.37",
     "vue-design-system": "workspace:*",
     "vue-i18n": "9.2.2",
