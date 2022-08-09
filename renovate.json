@@ -1,41 +1,61 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableRateLimiting"
   ],
   "labels": [
     "dependencies"
   ],
-  "includePaths": [
-    "package.json",
-    "apps/**",
-    "packages/**"
+  "schedule": [
+    "at any time"
   ],
-  "automerge": false,
-  "dependencyDashboard": true,
+  "constraints": {
+    "pnpm": "7"
+  },
   "packageRules": [
     {
-      "groupName": "appsgeneral",
-      "commitMessageTopic": "appsgeneral",
-      "groupSlug": "appsgeneral",
+      "groupName": "definitelyTyped",
+      "automerge": "true",
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "updateTypes": [
+        "patch",
+        "minor"
+      ],
+      "schedule": [
+        "before 8am on Wednesday"
+      ]
+    },
+    {
+      "groupName": "turbo-init",
+      "commitMessageTopic": "turbo-init",
       "matchPaths": [
-        "packages/email/**",
-        "packages/storybook-vue/**"
+        "package.json"
       ],
       "matchUpdateTypes": [
         "patch",
         "minor",
         "major"
+      ]
+    },
+    {
+      "groupName": "appsgenel",
+      "commitMessageTopic": "appsgenel",
+      "matchPaths": [
+        "apps/email/**",
+        "apps/storybook-vue/**"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "major"
       ]
     },
     {
       "groupName": "packages",
       "commitMessageTopic": "packages",
-      "groupSlug": "packages-minor",
       "matchPaths": [
         "packages/**"
       ],
@@ -43,46 +63,41 @@
         "patch",
         "minor"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
       "groupName": "packages",
       "commitMessageTopic": "packages",
-      "groupSlug": "packages-major",
       "matchPaths": [
         "packages/**"
       ],
       "matchUpdateTypes": [
         "major"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
       "groupName": "vue",
       "commitMessageTopic": "vue",
-      "groupSlug": "vue-minor",
       "matchPaths": [
         "apps/vue-mobile/**",
         "apps/vue-web/**"
       ],
       "matchUpdateTypes": [
+        "patch",
         "minor"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
       "groupName": "vue",
       "commitMessageTopic": "vue",
-      "groupSlug": "vue-major",
       "matchPaths": [
         "apps/vue-mobile/**",
         "apps/vue-web/**"
@@ -90,44 +105,38 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
       "groupName": "nestjs",
       "commitMessageTopic": "nestjs",
-      "groupSlug": "nestjs-minor",
       "matchPaths": [
-        "apps/nestjs/**",
         "apps/nestjs/**"
       ],
       "matchUpdateTypes": [
+        "patch",
         "minor"
       ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
       "groupName": "nestjs",
       "commitMessageTopic": "nestjs",
-      "groupSlug": "nestjs-major",
       "matchPaths": [
-        "apps/nestjs/**",
         "apps/nestjs/**"
       ],
       "matchUpdateTypes": [
         "major"
-      ],
-      "matchDepTypes": [
-        "dependencies",
-        "devDependencies"
       ],
       "excludePackageNames": [
         "nanoid"
+      ],
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
@@ -137,8 +146,10 @@
       "matchPackagePatterns": [
         "*"
       ],
+      "matchDatasources": [
+        "npm"
+      ],
       "groupName": "packages dependencies",
-      "groupSlug": "packages-path",
       "rangeStrategy": "replace"
     }
   ],
