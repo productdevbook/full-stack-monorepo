@@ -67,7 +67,7 @@
     "jose": "4.8.3",
     "lodash": "4.17.21",
     "ms": "3.0.0-canary.1",
-    "nanoid": "3.3.4",
+    "nanoid": "4.0.0",
     "nestjs-i18n": "9.1.5",
     "nodemailer": "6.7.7",
     "passport": "0.6.0",
