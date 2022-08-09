@@ -1,18 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":disableRateLimiting"
+    "config:base"
   ],
+  "rebaseWhen": "conflicted",
   "labels": [
     "dependencies"
   ],
   "schedule": [
-    "at any time"
+    "before 6am on the first day of the month"
   ],
-  "constraints": {
-    "pnpm": "7"
-  },
   "packageRules": [
     {
       "groupName": "definitelyTyped",
@@ -23,9 +20,6 @@
       "updateTypes": [
         "patch",
         "minor"
-      ],
-      "schedule": [
-        "before 8am on Wednesday"
       ]
     },
     {
@@ -41,8 +35,8 @@
       ]
     },
     {
-      "groupName": "appsgenel",
-      "commitMessageTopic": "appsgenel",
+      "groupName": "apps-general",
+      "commitMessageTopic": "apps-general",
       "matchPaths": [
         "apps/email/**",
         "apps/storybook-vue/**"
@@ -138,19 +132,6 @@
       "matchDatasources": [
         "npm"
       ]
-    },
-    {
-      "matchPaths": [
-        "packages/**"
-      ],
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchDatasources": [
-        "npm"
-      ],
-      "groupName": "packages dependencies",
-      "rangeStrategy": "replace"
     }
   ],
   "ignoreDeps": [
