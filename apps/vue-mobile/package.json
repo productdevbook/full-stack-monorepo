@@ -73,7 +73,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "0.25.2",
     "@capacitor/cli": "4.0.1",
-    "@iconify-json/ic": "1.1.7",
+    "@iconify-json/ic": "1.1.8",
     "@iconify-json/mdi": "1.1.29",
     "@iconify-json/ph": "1.1.2",
     "@ionic/cli": "6.20.1",
