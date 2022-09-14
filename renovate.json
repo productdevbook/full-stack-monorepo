@@ -10,6 +10,9 @@
   "schedule": [
     "before 6am on the first day of the month"
   ],
+  "baseBranches": [
+    "main"
+  ],
   "packageRules": [
     {
       "groupName": "definitelyTyped",
@@ -20,23 +23,14 @@
       "updateTypes": [
         "patch",
         "minor"
-      ]
-    },
-    {
-      "groupName": "turbo-init",
-      "commitMessageTopic": "turbo-init",
-      "matchPaths": [
-        "package.json"
       ],
-      "matchUpdateTypes": [
-        "patch",
-        "minor",
-        "major"
+      "schedule": [
+        "before 8am on Wednesday"
       ]
     },
     {
-      "groupName": "apps-general",
-      "commitMessageTopic": "apps-general",
+      "groupName": "appsgenel",
+      "commitMessageTopic": "appsgenel",
       "matchPaths": [
         "apps/email/**",
         "apps/storybook-vue/**"
@@ -45,6 +39,25 @@
         "patch",
         "minor",
         "major"
+      ]
+    },
+    {
+      "groupName": "local",
+      "commitMessageTopic": "local",
+      "ignorePaths": [
+        "**/apps/**",
+        "**/packages/**"
+      ],
+      "matchFiles": [
+        "package.json"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "major"
+      ],
+      "matchDatasources": [
+        "npm"
       ]
     },
     {
