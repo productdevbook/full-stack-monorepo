@@ -31,7 +31,7 @@
     "@vue/apollo-composable": "^4.0.0-alpha.16",
     "chokidar": "^3.5.3",
     "eslint": "^8.19.0",
-    "graphql-tag": "^2.12.6",
+    "graphql-tag": "2.12.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "4.7.4"
   },
