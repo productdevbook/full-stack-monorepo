@@ -10,12 +10,12 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.0",
+    "@antfu/eslint-config": "0.26.3",
     "@oku/config": "workspace:*",
     "@oku/tsconfig": "workspace:*",
-    "chokidar": "^3.5.3",
-    "eslint": "^8.19.0",
-    "ts-node-dev": "^2.0.0"
+    "chokidar": "3.5.3",
+    "eslint": "8.26.0",
+    "ts-node-dev": "2.0.0"
   },
   "publishConfig": {
     "access": "public"
