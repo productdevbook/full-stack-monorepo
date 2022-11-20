@@ -7,12 +7,12 @@
     "lint:fix": "eslint --fix \"./**/*.{ts,vue}\""
   },
   "devDependencies": {
-    "@vueuse/core": "9.1.0",
-    "canvas-confetti": "1.5.1",
-    "naive-ui": "2.32.1",
+    "@vueuse/core": "9.5.0",
+    "canvas-confetti": "1.6.0",
+    "naive-ui": "2.33.5",
     "oku-i18n": "workspace:*",
     "@oku/tsconfig": "workspace:*",
-    "vee-validate": "4.6.4",
+    "vee-validate": "4.7.3",
     "vue": "^3.2.37",
     "vue-design-system": "workspace:*",
     "vue-i18n": "9.2.2",
