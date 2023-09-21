@@ -57,7 +57,7 @@
     "crypto-js": "4.1.1",
     "date-fns": "2.29.1",
     "firebase": "9.9.1",
-    "graphql": "16.5.0",
+    "graphql": "16.8.1",
     "graphql-ws": "5.9.1",
     "pinia": "2.0.16",
     "vee-validate": "4.6.2",
