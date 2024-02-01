@@ -13,7 +13,7 @@
     "graphql-ts": "graphql-codegen --config codegen.yml"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.0",
+    "@antfu/eslint-config": "^0.43.0",
     "@graphql-codegen/add": "^3.1.1",
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/introspection": "^2.1.1",
@@ -33,7 +33,7 @@
     "eslint": "^8.19.0",
     "graphql-tag": "^2.12.6",
     "ts-node-dev": "^2.0.0",
-    "typescript": "4.7.4"
+    "typescript": "4.9.5"
   },
   "publishConfig": {
     "access": "public"

@@ -10,7 +10,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.0",
+    "@antfu/eslint-config": "^0.43.0",
     "@oku/config": "workspace:*",
     "@oku/tsconfig": "workspace:*",
     "chokidar": "^3.5.3",
