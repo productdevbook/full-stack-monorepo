@@ -62,7 +62,7 @@
   "packageManager": "pnpm@7.9.0",
   "dependencies": {
     "add": "2.0.6",
-    "axios": "0.27.2",
+    "axios": "1.6.0",
     "date-fns": "2.29.1",
     "lodash": "4.17.21",
     "pinia": "2.0.17"
